@@ -1,0 +1,10 @@
+CREATE TABLE Product (
+id SERIAL,
+name VARCHAR(60) NOT NULL UNIQUE,
+description VARCHAR(240),
+brand VARCHAR(60) NOT NULL,
+type VARCHAR(60) NOT NULL,
+price DECIMAL(5, 2) NOT NULL,
+quantity INT NOT NULL,
+CONSTRAINT primary_key PRIMARY KEY (id)
+);
