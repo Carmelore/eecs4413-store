@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html ng-app="Group-V_Store">
+<head> 
+    <title>Shoppity</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+	<script src="product.js"></script>
+</head>
+<body>
+    <p>Hello world. <a href="/products">Products page here</a></p>
+    
+    <div ng-controller="Product">
+    	<table>
+    		<tr>
+    			<th>Name</th>
+    			<th>Price</th>
+    		</tr>
+    		<tr ng-repeat="product in products track by $index">
+    			<td><a href="/product/{{product.id}}">{{product.name}}</a></td>
+    			<td>${{product.price}}</td>
+    		</tr>
+    	</table>
+    </div>
+</body>
+</html>
