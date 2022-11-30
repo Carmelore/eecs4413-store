@@ -12,11 +12,11 @@ public class ProductJdbcRepository {
 	JdbcTemplate jdbcTemplate;
 
 	public Product findById(int id) {
-		return jdbcTemplate.queryForObject("select * from Product where id=?", new BeanPropertyRowMapper<>(Product.class), id);
+		return jdbcTemplate.queryForObject("select * from Products where id=?", new BeanPropertyRowMapper<>(Product.class), id);
 	}
 	
 	public List<Product> findAll() {
-		List<Product> results = jdbcTemplate.query("select * from Product", new BeanPropertyRowMapper<>(Product.class));
+		List<Product> results = jdbcTemplate.query("select * from Products", new BeanPropertyRowMapper<>(Product.class));
 		return results;
 	}
 }
