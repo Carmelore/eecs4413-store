@@ -4,7 +4,7 @@ angular.module('Group-V_Store', []).controller('Product', function($scope, $http
 		.then(function(response) {
 			$scope.products = response.data;
 		});
-	
+	});
 //	$scope.add = function() {
 //		let hasNewRecord = false;
 //		
@@ -21,4 +21,3 @@ angular.module('Group-V_Store', []).controller('Product', function($scope, $http
 //	
 //	$scope.save = function() {
 //	}
-});
