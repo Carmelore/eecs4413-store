@@ -7,8 +7,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 	<script src="user.js"></script>
 </head>
-<body ng-controller="User">
-	<form ng-submit="register()" name="registrationForm" autocomplete="off">
+<body>
+	<form ng-controller="User" ng-submit="register()" autocomplete="off">
 		<label for="name">Name: </label>
 		<input type="text" name="name" ng-model="user.name" required />
 		<p id="nameError"></p>

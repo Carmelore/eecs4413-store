@@ -1,5 +1,4 @@
-angular.module('Group-V_Store', []).controller('User', function($scope, $http, $location) {
-
+angular.module('Group-V_Store').controller('User', function($scope, $http) {
 	$http.get('/users')
 		.then(function(response) {
 			$scope.users = response.data;
