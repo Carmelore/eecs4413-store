@@ -3,18 +3,19 @@
 <head> 
     <title>User Login</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+	<script src="user.js"></script>
 </head>
 <body>
-	<div ng-controller="User">
-		<form ng-submit="login()">
-			<label for="username">Username: </label>
-			<input type="text" name="username" ng-model="username" required></input>
-			<br/>
-			<label for="password">Password: </label>
-			<input type="password" name="password" ng-model="password" required></input>
-			<br/>
-			<button>Login</button>
-		</form>
-	</div>
+	<form ng-submit="login()" ng-controller="User" autocomplete="off">
+		<label for="username">Username: </label>
+		<input type="text" name="username" ng-model="user.username" required></input>
+		<br/>
+		<label for="password">Password: </label>
+		<input type="password" name="password" ng-model="user.password" required></input>
+		<br/>
+		<input type="submit" value="Login"/>
+	</form>
 </body>
 </html>

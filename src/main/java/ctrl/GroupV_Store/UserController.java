@@ -43,6 +43,16 @@ public class UserController {
 		return repository.create(user.getName(), user.getUsername(), user.getPassword());
 	}
 	
+	@PostMapping("/login")
+	public void login(@RequestBody String data) throws Exception {
+		Gson gson = new Gson();
+		User user = gson.fromJson(data, User.class);
+		
+		if (!repository.verify(user.getUsername(), user.getPassword())) {
+			throw new Exception("invalid login");
+		}
+	}
+
 	private boolean validateName(String name) {
 		Pattern pattern = Pattern.compile("^[a-zA-ZÀ-ž-' ]+$");
 		Matcher matcher = pattern.matcher(name);
@@ -54,4 +64,5 @@ public class UserController {
 		Matcher matcher = pattern.matcher(username);
 		return matcher.find();
 	}
+	
 }

@@ -28,4 +28,21 @@ public class UserJdbcRepository {
 	public int create(String name, String username, String password) {
 		return jdbcTemplate.update("insert into Users(name, username, password, admin) values(?,?,?,?)", name, username, password, false);
 	}
+	
+	public boolean verify(String username, String password) {
+		User user;
+		
+		try {
+			user = findByUsername(username);
+		}
+		catch (Exception e) {
+			return false;
+		}
+		
+		if (!user.getPassword().equals(password)) {
+			return false;
+		}
+		
+		return true;
+	}
 }

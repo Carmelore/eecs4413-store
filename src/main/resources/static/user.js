@@ -6,6 +6,22 @@ angular.module('Group-V_Store', []).controller('User', function($scope, $http, $
 		});
 	
 	$scope.login = function() {
+		let error = false;
+		
+		// validate username + password combo
+		
+		let onSuccess = function() {
+			window.location.replace('/');
+		};
+		
+		let onError = function(data, status, headers, config) {
+            alert("invalid login");
+            console.log(data);
+        };
+        
+        $http.post('/login', $scope.user)
+        	.success(onSuccess)
+        	.error(onError);
 	}
 	
 	$scope.register = function() {
@@ -36,11 +52,11 @@ angular.module('Group-V_Store', []).controller('User', function($scope, $http, $
 		
 		if (error) return;
 		
-		let onSuccess = function () {
+		let onSuccess = function() {
 			window.location.href = '/login.html';
         };
         
-        var onError = function (data, status, headers, config) {
+        let onError = function(data, status, headers, config) {
             console.log(data);
             console.log(status);
             console.log(headers);
