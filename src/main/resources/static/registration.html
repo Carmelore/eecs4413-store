@@ -8,16 +8,23 @@
 	<script src="user.js"></script>
 </head>
 <body ng-controller="User">
-	<form ng-submit="register()">
+	<form ng-submit="register()" name="registrationForm" autocomplete="off">
+		<label for="name">Name: </label>
+		<input type="text" name="name" ng-model="user.name" required />
+		<p id="nameError"></p>
+		
 		<label for="username">Username: </label>
 		<input type="text" name="username" ng-model="user.username" required />
-		<br/>
+		<p id="usernameError"></p>
+		
 		<label for="password">Password: </label>
 		<input type="password" name="password" ng-model="user.password" required />
-		<br/>
-<!-- 			<label for="password2">Retype password: </label>
-			<input type="password" name="password2" ng-model="password2" required />
-			<br/> -->
+		<p id="passwordError"></p>
+		
+		<label for="password2">Retype password: </label>
+		<input type="password" name="password2" ng-model="user.password2" required />
+		<p id="password2Error"></p>
+		
 		<input type="submit" value="Register" />
 	</form>
 </body>

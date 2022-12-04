@@ -24,4 +24,8 @@ public class UserJdbcRepository {
 		List<User> results = jdbcTemplate.query("select * from Users", new BeanPropertyRowMapper<>(User.class));
 		return results;
 	}
+	
+	public int create(String name, String username, String password) {
+		return jdbcTemplate.update("insert into Users(name, username, password, admin) values(?,?,?,?)", name, username, password, false);
+	}
 }

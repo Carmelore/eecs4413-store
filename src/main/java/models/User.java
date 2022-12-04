@@ -7,7 +7,12 @@ public class User {
 	private String password;
 	private boolean admin;
 	
+	public User() {
+		super();
+	}
+	
 	public User(int id, String name, String username, String password, boolean admin) {
+		super();
 		this.id = id;
 		this.name = name;
 		this.username = username;

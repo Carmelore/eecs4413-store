@@ -3,6 +3,8 @@ package ctrl.GroupV_Store;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import com.google.gson.Gson;
+
 import models.User;
 import models.UserJdbcRepository;
 
@@ -24,8 +26,10 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public String user(@RequestBody String user) {
-		System.out.println(user);
-		return null;
+	public int user(@RequestBody String data) {
+		Gson gson = new Gson();
+		User user = gson.fromJson(data, User.class);
+		
+		return repository.create(user.getName(), user.getUsername(), user.getPassword());
 	}
 }
