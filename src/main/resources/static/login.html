@@ -1,18 +1,20 @@
 <!DOCTYPE HTML>
-<html>
+<html ng-app="Group-V_Store">
 <head> 
     <title>User Login</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<form action="">
-		<label for="username">Username: </label>
-		<input type="text" name="username"></input>
-		<br/>
-		<label for="password">Password: </label>
-		<input type="password" name="password"></input>
-		<br/>
-		<button>Login</button>
-	</form>
+	<div ng-controller="User">
+		<form ng-submit="login()">
+			<label for="username">Username: </label>
+			<input type="text" name="username" ng-model="username" required></input>
+			<br/>
+			<label for="password">Password: </label>
+			<input type="password" name="password" ng-model="password" required></input>
+			<br/>
+			<button>Login</button>
+		</form>
+	</div>
 </body>
 </html>
