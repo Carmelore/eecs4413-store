@@ -5,11 +5,12 @@ app.controller("CheckoutController", function ($scope) {
 	
 })
 
-function submitOrder() {
+function submitOrder(e) {
+	console.log(e);
 	count++;
 	const firstName = document.getElementById('firstName');
 	const lastName = document.getElementById('lastName');
-	console.log(firstName, lastName);
+	alert(firstName, lastName);
 	if (count % 3 == 0){
 		alert("Payment failed");
 	}else {
