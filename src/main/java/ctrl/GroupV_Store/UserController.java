@@ -1,5 +1,8 @@
 package ctrl.GroupV_Store;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,10 +29,29 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public int user(@RequestBody String data) {
+	public int user(@RequestBody String data) throws Exception {
 		Gson gson = new Gson();
 		User user = gson.fromJson(data, User.class);
+		String name = user.getName();
+		String username = user.getUsername();
+		String password = user.getPassword();
+		
+		if (!validateName(name) || !validateUsername(username) || password.length() < 8) {
+			throw new Exception("Invalid info");
+		}
 		
 		return repository.create(user.getName(), user.getUsername(), user.getPassword());
+	}
+	
+	private boolean validateName(String name) {
+		Pattern pattern = Pattern.compile("^[a-zA-ZÀ-ž-' ]+$");
+		Matcher matcher = pattern.matcher(name);
+		return matcher.find();
+	}
+	
+	private boolean validateUsername(String username) {
+		Pattern pattern = Pattern.compile("^[a-zA-Z0-9-_]+$");
+		Matcher matcher = pattern.matcher(username);
+		return matcher.find();
 	}
 }

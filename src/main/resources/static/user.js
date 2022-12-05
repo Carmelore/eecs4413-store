@@ -10,16 +10,26 @@ angular.module('Group-V_Store', []).controller('User', function($scope, $http, $
 	
 	$scope.register = function() {
 		let error = false;
+		let errorMessages = document.getElementsByClassName("error");
+		[].forEach.call(errorMessages, (message) => {
+			message.innerHTML = "";
+		});
 		
-		// TODO: what validation should we have on name and username?
+		if (!validateName($scope.user.name)) {
+			error = true;
+			document.getElementById("nameError").innerHTML = "Invalid name";
+		}
+		
+		if (!validateUsername($scope.user.username)) {
+			error = true;
+			document.getElementById("usernameError").innerHTML = "Usernames can only contain letters, numbers, or dashes";
+		}
 		
 		if ($scope.user.password.length < 8) {
 			error = true;
 			document.getElementById("passwordError").innerHTML = "Password must be at least 8 characters long";
 		}
 		else if ($scope.user.password !== $scope.user.password2) {
-			console.log($scope.user.password);
-			console.log($scope.user.password2);
 			error = true;
 			document.getElementById("password2Error").innerHTML = "Passwords must match";
 		}
@@ -42,3 +52,13 @@ angular.module('Group-V_Store', []).controller('User', function($scope, $http, $
 			.error(onError);
 	}
 });
+
+function validateName(name) {
+	let pattern = new RegExp("/^[a-zÀ-ž-' ]+$/i");
+	return pattern.test(name);
+}
+
+function validateUsername(username) {
+	let pattern = new RegExp("/^[a-z-_\d]+$/i");
+	return pattern.test(username);
+}
