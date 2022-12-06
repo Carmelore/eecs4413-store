@@ -24,6 +24,4 @@ public class ProductController {
 	public String products(Model model) {
 		return repository.findAll().toString();
 	}
-	
-	
 }
