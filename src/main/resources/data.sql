@@ -8,3 +8,7 @@ INSERT INTO users(name, username, password, admin) VALUES ('Jeeven', 'JeevenDhan
 INSERT INTO users(name, username, password, admin) VALUES ('Adam', 'Addma', 'password', true);
 INSERT INTO users(name, username, password, admin) VALUES ('Daniel', 'Mandokero', 'password', true);
 INSERT INTO users(name, username, password, admin) VALUES ('Non-Admin User', 'username', 'password', false);
+
+--INSERT INTO sales(user_id, product_id, quantity, created_at) VALUES ();
+
+--INSERT INTO visits(ip_address) VALUES ();
