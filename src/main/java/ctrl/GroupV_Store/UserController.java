@@ -35,12 +35,12 @@ public class UserController {
 		String name = user.getName();
 		String username = user.getUsername();
 		String password = user.getPassword();
-		
+	
 		if (!validateName(name) || !validateUsername(username) || password.length() < 8) {
 			throw new Exception("Invalid info");
 		}
 		
-		return repository.create(user.getName(), user.getUsername(), user.getPassword());
+		return repository.create(name, username, password, user.getShipping_address(), user.getBilling_address());
 	}
 	
 	@PostMapping("/login")
