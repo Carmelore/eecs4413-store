@@ -1,0 +1,23 @@
+<div ng-controller="Stats">
+	<h1>ADMIN</h1>
+	<div>
+		<h2>Sales for the month of {{month}}</h2>
+		<table>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+			</tr>
+			<tr ng-repeat="sale in sales track by $index">
+				<td>{{sale.product}}</td>
+				<td>{{sale.quantity}}</td>
+			</tr>
+		</table>
+	</div>
+	<br/>
+	<div>
+		<h2>Visits</h2>
+	</div>
+	<!-- <form ng-controller="Stats" ng-submit="test()"> -->
+	<!-- 	<input type="submit" value="test" /> -->
+	<!-- </form> -->
+</div>
