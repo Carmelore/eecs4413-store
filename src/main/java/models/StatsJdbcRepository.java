@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
@@ -34,14 +35,16 @@ public class StatsJdbcRepository {
 		
 		return sales;
 	}
-
-//	public int createVisit(String ipa, int product, Visit.status status) {
-//		return jdbcTemplate.update("insert into Visits(ip_address, created_at, product_id, status) values(?,?,?,?)",
-//				ipa, LocalDate.now(), product, status);
-//	}
-//	
-//	public List<Visit> findAll() {
-//		List<Visit> results = jdbcTemplate.query("select * from Visits", new BeanPropertyRowMapper<>(Visit.class));
-//		return results;
-//	}
+	
+	public List<Map<String, Object>> getVisits() {
+		List<Map<String, Object>> results = jdbcTemplate.queryForList("SELECT Visits.created_at, Visits.ip_address, Products.name, "
+				+ "Visits.status FROM Visits INNER JOIN Products ON Visits.product_id = Products.id "
+				+ "ORDER BY Visits.created_at DESC");
+		return results;
+	}
+	
+	public int createVisit(String ipa, int productId, Visit.Status status) {
+		return jdbcTemplate.update("insert into Visits(ip_address, created_at, product_id, status) values(?,?,?,?)",
+				ipa, LocalDate.now().toString(), productId, status.toString());
+	}
 }

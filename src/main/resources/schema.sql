@@ -37,7 +37,7 @@ id SERIAL,
 ip_address VARCHAR(20) NOT NULL,
 created_at DATE NOT NULL,
 product_id INT NOT NULL,
-status VARCHAR(12) NOT NULL DEFAULT 'VIEWED',
+status ENUM('VIEWED', 'IN_CART', 'PURCHASED') NOT NULL DEFAULT 'VIEWED',
 FOREIGN KEY (product_id) REFERENCES Products
 );
 

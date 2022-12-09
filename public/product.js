@@ -6,6 +6,24 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 	$http.get(`http://localhost:8080/product?id=${urlParams.get('id')}`)
 		.then(function(response) {
 			$scope.product = response.data;
+			
+			// can't get this working due to a CORS issue	
+		//	$http.get('https://api.ipify.org/?format=json')
+		//		.then((response) => {
+		//			let ipa = response.data.ip;
+		//			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
+		//		});
+		
+			// so just randomly generating IP addresses instead :(
+			
+			let ipa = "";
+			for (let i = 0; i < 3; i++) {
+				ipa += Math.floor(Math.random() * 999 + 1);
+				ipa += ".";
+			}
+			ipa += Math.floor(Math.random() * 999 + 1);
+			
+			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
 		});
 	
 	$http.get(`/reviews?id=${urlParams.get('id')}`)

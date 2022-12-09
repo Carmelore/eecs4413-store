@@ -16,8 +16,19 @@
 	<br/>
 	<div>
 		<h2>Visits</h2>
+		<table>
+			<tr>
+				<th>Date</th>
+				<th>IP Address</th>
+				<th>Product</th>
+				<th>Status</th>
+			</tr>
+			<tr ng-repeat="visit in visits track by $index">
+				<td>{{visit.date}}</td>
+				<td>{{visit.ipa}}</td>
+				<td>{{visit.product}}</td>
+				<td>{{visit.status}}</td>
+			</tr>
+		</table>
 	</div>
-	<!-- <form ng-controller="Stats" ng-submit="test()"> -->
-	<!-- 	<input type="submit" value="test" /> -->
-	<!-- </form> -->
 </div>
