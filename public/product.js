@@ -1,8 +1,11 @@
-angular.module('Group-V_Store', []).controller('Product', function($scope, $http) {
+angular.module('Group-V_Store', []).controller('ProductController', function($scope, $http) {
 	// get list of products
-	$http.get('http://localhost:8080/products')
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	
+	$http.get(`http://localhost:8080/product?id=${urlParams.get('id')}`)
 		.then(function(response) {
-			$scope.products = response.data;
+			$scope.product = response.data;
 		});
 	});
 //	$scope.add = function() {

@@ -19,4 +19,14 @@ public class ProductJdbcRepository {
 		List<Product> results = jdbcTemplate.query("select * from Product", new BeanPropertyRowMapper<>(Product.class));
 		return results;
 	}
+	
+	public List<Product> findByType(String type) {
+		List<Product> results = jdbcTemplate.query("select * from Product where type=?", new BeanPropertyRowMapper<>(Product.class), type);
+		return results;
+	}
+	
+	public List<Product> findByBrand(String brand) {
+		List<Product> results = jdbcTemplate.query("select * from Product where brand=?", new BeanPropertyRowMapper<>(Product.class), brand);
+		return results;
+	}
 }

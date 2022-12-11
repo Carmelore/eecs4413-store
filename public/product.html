@@ -9,7 +9,56 @@
 	<script src="product.js"></script>
 </head>
 <body>
-	<div ng-controller="Product">
-		<h1>HERE</h1>
+	<h1>SHOPPITY</h1>
+    <nav>
+    <ul>
+        <li>
+    <a href="/">Home</a>
+    </li>
+    <li>
+    <a>Cart</a>
+    </li>
+        <li>
+    <a href="/products.html">Products</a>
+    </li>
+        <li>
+    <a href="/checkout.html">Checkout</a>
+    </li>
+                <li>
+    <a href="/checkout">Checkout2</a>
+    </li>
+    </ul>
+    </nav>
+    
+	<div ng-controller="ProductController">
+<!-- 		<h1>HERE</h1>
+		<p>{{product}}</p> -->
+		
+		<table>
+		<tr>
+			<td><b>Name: </b></td>
+			<td>{{product.name}}</td>
+		</tr>
+		<tr>
+			<td><b>Description: &nbsp &nbsp</b></td>
+			<td>{{product.description}}</td>
+		</tr>
+		<tr>
+			<td><b>Type: </b></td>
+			<td>{{product.type}}</td>
+		</tr>
+		<tr>
+			<td><b>Brand: </b></td>
+			<td>{{product.brand}}</td>
+		</tr>
+		<tr>
+			<td><b>Price: </b></td>
+			<td>${{product.price}}</td>
+		</tr>
+		<tr>
+			<td><b>Stock: </b></td>
+			<td>{{product.quantity}}</td>
+		</tr>
+		</table>
 	</div>
 </body>

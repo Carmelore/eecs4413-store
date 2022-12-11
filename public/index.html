@@ -19,7 +19,7 @@
     <a>Cart</a>
     </li>
         <li>
-    <a>Products</a>
+    <a href="/products.html">Products</a>
     </li>
         <li>
     <a href="/checkout.html">Checkout</a>
@@ -29,20 +29,5 @@
     </li>
     </ul>
     </nav>
-    <p>Hello world. <a href="/products">Products page here</a></p>
-
-    <div ng-controller="Product">
-    	<table>
-    		<tr>
-    			<th>Name</th>
-    			<th>Price</th>
-    		</tr>
-    		<tr ng-repeat="product in products track by $index">
-    			<td><a href="/product/{{product.id}}">{{product.name}}</a></td>
-    			<td>${{product.price}}</td>
-    		</tr>
-    		
-    	</table>
-    </div>
 </body>
 </html>

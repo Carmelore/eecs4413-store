@@ -8,15 +8,11 @@ app.config(['$routeProvider', function($routeProvider) {
                     redirectTo: '/'
                 });
             }]);
+app.config(['$locationProvider', function($locationProvider){
+    $locationProvider.html5Mode(true);
+}]);
 app.controller('CheckoutController', function($scope) {
     $scope.message = "Shoppity";
-});
-products.controller('Product', function($scope, $http) {
-	// get list of products
-	$http.get('http://localhost:8080/products')
-		.then(function(response) {
-			$scope.products = response.data;
-		});
 });
 
 
