@@ -15,6 +15,8 @@ id SERIAL,
 name VARCHAR(60) NOT NULL,
 username VARCHAR(20) NOT NULL,
 password VARCHAR(20) NOT NULL,
+shipping_address VARCHAR(200) NOT NULL,
+billing_address VARCHAR(200) NOT NULL,
 admin BOOLEAN DEFAULT FALSE,
 PRIMARY KEY (id)
 );

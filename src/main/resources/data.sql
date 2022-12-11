@@ -3,11 +3,11 @@ INSERT INTO products(name, description, brand, type, price, quantity) VALUES ('p
 INSERT INTO products(name, description, brand, type, price, quantity) VALUES ('product 3', 'the third product', 'special', 'product', 99.99, 2);
 INSERT INTO products(name, description, brand, type, price, quantity) VALUES ('product 4', 'the fourth product', 'generic', 'non-product', 9.99, 200);
 
-INSERT INTO users(name, username, password, admin) VALUES ('Carmela', 'carmelal', 'password', true);
-INSERT INTO users(name, username, password, admin) VALUES ('Jeeven', 'JeevenDhanoa', 'password', true);
-INSERT INTO users(name, username, password, admin) VALUES ('Adam', 'Addma', 'password', true);
-INSERT INTO users(name, username, password, admin) VALUES ('Daniel', 'Mandokero', 'password', true);
-INSERT INTO users(name, username, password, admin) VALUES ('Non-Admin User', 'username', 'password', false);
+INSERT INTO users(name, username, password, shipping_address, billing_address, admin) VALUES ('Carmela', 'carmelal', 'password', 'shipping', 'billing', true);
+INSERT INTO users(name, username, password, shipping_address, billing_address, admin) VALUES ('Jeeven', 'JeevenDhanoa', 'password', 'shipping', 'billing', true);
+INSERT INTO users(name, username, password, shipping_address, billing_address, admin) VALUES ('Adam', 'Addma', 'password', 'shipping', 'billing', true);
+INSERT INTO users(name, username, password, shipping_address, billing_address, admin) VALUES ('Daniel', 'Mandokero', 'password', 'shipping', 'billing', true);
+INSERT INTO users(name, username, password, shipping_address, billing_address, admin) VALUES ('Non-Admin User', 'username', 'password', 'shipping', 'billing', false);
 
 INSERT INTO sales(user_id, product_id, quantity, created_at) VALUES (1, 1, 1, '2022-12-09');
 INSERT INTO sales(user_id, product_id, quantity, created_at) VALUES (1, 3, 2, '2022-12-09');

@@ -13,6 +13,14 @@
 		<input type="text" name="name" ng-model="user.name" required />
 		<p id="nameError"></p>
 		
+		<label for="name">Default shipping address: </label>
+		<input type="text" name="shipping_address" ng-model="user.shipping_address" required />
+		<p id="shippingAddressError"></p>
+		
+		<label for="name">Default billing address: </label>
+		<input type="text" name="billing_address" ng-model="user.billing_address" required />
+		<p id="billingAddressError"></p>
+		
 		<label for="username">Username: </label>
 		<input type="text" name="username" ng-model="user.username" required />
 		<p id="usernameError"></p>

@@ -69,11 +69,11 @@ angular.module('Group-V_Store').controller('User', function($scope, $http) {
 });
 
 function validateName(name) {
-	let pattern = new RegExp("/^[a-zÀ-ž-' ]+$/i");
+	let pattern = new RegExp("^[a-zA-ZÀ-ž-' ]+$");
 	return pattern.test(name);
 }
 
 function validateUsername(username) {
-	let pattern = new RegExp("/^[a-z-_\d]+$/i");
+	let pattern = new RegExp("^[a-zA-Z-_\d]+$");
 	return pattern.test(username);
 }

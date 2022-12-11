@@ -25,8 +25,9 @@ public class UserJdbcRepository {
 		return results;
 	}
 	
-	public int create(String name, String username, String password) {
-		return jdbcTemplate.update("insert into Users(name, username, password, admin) values(?,?,?,?)", name, username, password, false);
+	public int create(String name, String username, String password, String shipping_address, String billing_address) {
+		return jdbcTemplate.update("insert into Users(name, username, password, shipping_address, billing_address, admin) values(?,?,?,?,?,?)",
+				name, username, password, shipping_address, billing_address, false);
 	}
 	
 	public boolean verify(String username, String password) {
