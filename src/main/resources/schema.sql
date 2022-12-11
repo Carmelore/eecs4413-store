@@ -18,3 +18,23 @@ password VARCHAR(20) NOT NULL,
 admin BOOLEAN DEFAULT FALSE,
 PRIMARY KEY (id)
 );
+
+CREATE TABLE Sales (
+id SERIAL,
+user_id INT NOT NULL,
+product_id INT NOT NULL,
+quantity INT NOT NULL DEFAULT 1,
+created_at DATE NOT NULL,
+PRIMARY KEY (id),
+FOREIGN KEY (user_id) REFERENCES Users,
+FOREIGN KEY (product_id) REFERENCES Products
+);
+
+CREATE TABLE Visits (
+id SERIAL,
+ip_address VARCHAR(20) NOT NULL,
+created_at DATE NOT NULL,
+product_id INT NOT NULL,
+status VARCHAR(12) NOT NULL DEFAULT 'VIEWED',
+FOREIGN KEY (product_id) REFERENCES Products
+);
