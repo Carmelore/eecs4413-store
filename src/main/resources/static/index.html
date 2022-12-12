@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
-<head> 
-    <title>Group V Store</title> 
+<head>
+    <title>Group V Store</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
@@ -10,8 +10,21 @@
     <script src="stats.js"></script>
 </head>
 <body ng-app="Group-V_Store" ng-view>
-    <a href="#login">Login</a><br/>
-    <a href="#registration">Registration</a><br/>
-    <a href="#admin">Admin</a>
+    <a href="#/login">Login</a><br/>
+    <a href="#/registration">Registration</a>
+    <a href="#/checkout">Checkout</a>
+    <div ng-controller="CartController as cartCtrl">
+		<div ng-repeat="product in products" style="" >
+		  <h3>{{ product.name }}</h3>
+		  <p>{{ product.description }}</p>
+		  <p>Price: {{product.price}}</p>
+		  <button ng-click="addToCart(product)" ng-controller="CartController as cartCtrl">Add to Cart</button>
+		</div>
+    </div>
+  <div ng-controller="CartController as cartCtrl">
+    <h2>Cart</h2>
+    <p>Total Quantity: {{ cartCtrl.cart.getTotalQuantity() }}</p>
+    <p>Total Price: {{ cartCtrl.cart.getTotalPrice() | currency }}</p>
+  </div>
 </body>
 </html>
