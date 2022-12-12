@@ -8,6 +8,16 @@ form input {
 form div > div label {
 	width: 50%;
 }
+form {
+	display: inline-block;
+}
 form label {
 width: 50%;	
+}
+#checkoutCart {
+	display: inline-block;
+	border: 1px solid black;
+}
+#checkoutWrapper {
+	display: flex;
 }
