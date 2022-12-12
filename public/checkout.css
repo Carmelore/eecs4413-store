@@ -1,0 +1,13 @@
+#paymentDetails {
+	display: flex;
+	flex-direction: column;
+}
+form input {
+	padding: .5rem;
+}
+form div > div label {
+	width: 50%;
+}
+form label {
+width: 50%;	
+}
