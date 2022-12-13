@@ -7,6 +7,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
 	<script src="products.js"></script>
+	
+	<link rel="stylesheet" href="pages.css" />
 </head>
 <body>
 <h1>SHOPPITY</h1>
@@ -50,7 +52,7 @@
     
     <hr>
     <div class="searchByType">
-    <form onsubmit="return searchByType()">
+    <form onsubmit="searchByType()">
     	<input id="type" type="text"
 			placeholder="Type..."/>
     	<button type="submit" style="align-self: center;">Search by type</button>
@@ -59,7 +61,7 @@
     
     <hr>
     <div class="searchByBrand">
-    <form onsubmit="return searchByBrand()">
+    <form onsubmit="searchByBrand()">
     	<input id="brand" type="text"
 			placeholder="Brand..."/>
     	<button type="submit" style="align-self: center;">Search by brand</button>
