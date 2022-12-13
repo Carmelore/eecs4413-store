@@ -26,6 +26,10 @@ INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.225.1
 INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.8.33.173', '2022-12-05', 4, 'PURCHASED');
 INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.8.33.173', '2022-12-04', 4, 'VIEWED');
 
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('50%OFF', 50, 0, 'percent', 0);
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('SAVE10', 10, 15, 'total', 0);
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('GSHBCN', 10, 15, 'total', 0);
+
 INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('anonymous', 5, 'cool', 1);
 INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('anonymous', 1, 'not cool', 1);
 INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('justin', 3, 'justin', 2);
