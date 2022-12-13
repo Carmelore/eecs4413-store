@@ -8,3 +8,7 @@ INSERT INTO users(name, username, password, admin) VALUES ('Jeeven', 'JeevenDhan
 INSERT INTO users(name, username, password, admin) VALUES ('Adam', 'Addma', 'password', true);
 INSERT INTO users(name, username, password, admin) VALUES ('Daniel', 'Mandokero', 'password', true);
 INSERT INTO users(name, username, password, admin) VALUES ('Non-Admin User', 'username', 'password', false);
+
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('50%OFF', 50, 0, 'percent', 0);
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('SAVE10', 10, 15, 'total', 0);
+INSERT INTO Discounts(code, discount, required_spending, discount_type, used) VALUES ('GSHBCN', 10, 15, 'total', 0);

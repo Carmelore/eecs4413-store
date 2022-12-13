@@ -12,7 +12,7 @@
 
 <link rel="stylesheet" href="checkout.css" />
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>SHOPPITY: CHECKOUT</title>
 </head>
 <body>
 	<h1>SHOPPITY</h1>
@@ -27,8 +27,7 @@
 	</nav>
 	<h1>CHECKOUT</h1>
 	<form action="#" method="POST" th:action="@{/checkout}"
-		th:object="${checkout}"
-		style="display: flex; flex-direction: column; gap: 1vh; width: 50%; margin: auto; border: 1px solid; padding: 5%;">
+		th:object="${checkout}" id="checkoutForm">
 		<h2>Contact Information</h2>
 		<label for="email"><input id="email" type="text"
 			placeholder="Email" th:field="*{email}" /></label> <label for="phoneNum"><input
@@ -49,7 +48,7 @@
 			placeholder="Postal Code" th:field="*{postalCode}" /></label>
 		<h2>Payment Information</h2>
 		<div id="paymentDetails">
-			<label for="cardNumber" style="display: inline-flex;">Card
+			<label for="cardNumber" id="cardDetailLabel">Card
 				details</label> <input id="cardNumber" placeholder="1234 1234 1234 1234" />
 			<div>
 				<label for="cardExp"><input id="cardExp"
@@ -59,7 +58,12 @@
 			<label for="cardName">Name on card </label> <input id="cardName"
 				th:field="*{cardName}" />
 		</div>
-		<button style="align-self: center;" onclick="e => submitOrder(e);">Process
+		<div id="DiscountCodes">
+			<label for="discountCode">Discount Codes</label> <input
+				id="discountCode" placeholder="SAVE MONEEEE"
+				th:field="*{discountCode}">
+		</div>
+		<button onclick="e => submitOrder(e);">Process
 			order</button>
 	</form>
 	<div ng-controller="CheckoutController"></div>
