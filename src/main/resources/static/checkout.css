@@ -3,16 +3,6 @@
 	flex-direction: column;
 }
 
-#checkoutForm {
-	display: flex;
-	flex-direction: column;
-	gap: 1vh;
-	width: 50%;
-	margin: auto;
-	border: 1px solid;
-	padding: 5%;
-}
-
 form input {
 	padding: .5rem;
 }
@@ -20,17 +10,31 @@ form input {
 form div>div label {
 	width: 50%;
 }
+
 form {
 	display: inline-block;
 }
+
 form label {
 	display: block;
 	width: 50%;
 }
+
+button {
+	align-self: center;
+}
+
 #checkoutCart {
 	display: inline-block;
 	border: 1px solid black;
 }
+
 #checkoutWrapper {
 	display: flex;
+	flex-direction: column;
+	gap: 1vh;
+	width: 80%;
+	margin: auto;
+	border: 1px solid;
+	padding: 5%;
 }
