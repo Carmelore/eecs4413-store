@@ -1,26 +1,22 @@
-angular.module('Group-V_Store').controller('User', function($scope, $http) {
+angular.module('Group-V_Store').controller('User', function($scope, $http, $window) {
 	$http.get('/users')
 		.then(function(response) {
 			$scope.users = response.data;
 		});
 	
 	$scope.login = function() {
-		let error = false;
-		
-		// validate username + password combo
-		
-		let onSuccess = function() {
-			window.location.replace('/');
-		};
-		
-		let onError = function(data, status, headers, config) {
-            alert("invalid login");
-            console.log(data);
-        };
-        
         $http.post('/login', $scope.user)
-        	.success(onSuccess)
-        	.error(onError);
+        	.then(function (response) {
+				$window.sessionStorage.setItem('user', JSON.stringify(response.data));
+				window.location.replace('/');
+			}, function () {
+				document.getElementById("loginError").innerHTML = "Incorrect username/password combination";
+			});
+	}
+
+	$scope.logout = function() {
+		$window.sessionStorage.removeItem('user');
+		window.location.replace('/');
 	}
 	
 	$scope.register = function() {

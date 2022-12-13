@@ -1,5 +1,6 @@
 package ctrl.GroupV_Store;
 
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,12 +21,18 @@ public class UserController {
 	
 	@GetMapping("/user")
 	public String user(@RequestParam(value = "id", defaultValue = "1") int id) {
-		return repository.findById(id).toString();
+		User user = repository.findById(id);
+		
+		Gson gson = new Gson();
+		return gson.toJson(user);
 	}
 	
 	@GetMapping("/users")
 	public String users() {
-		return repository.findAll().toString();
+		List<User> users = repository.findAll();
+		
+		Gson gson = new Gson();
+		return gson.toJson(users);
 	}
 	
 	@PostMapping("/users")
@@ -44,13 +51,16 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public void login(@RequestBody String data) throws Exception {
+	public String login(@RequestBody String data) throws Exception {
 		Gson gson = new Gson();
-		User user = gson.fromJson(data, User.class);
+		User login = gson.fromJson(data, User.class);
 		
-		if (!repository.verify(user.getUsername(), user.getPassword())) {
+		if (!repository.verify(login.getUsername(), login.getPassword())) {
 			throw new Exception("invalid login");
 		}
+		
+		User user = repository.findByUsername(login.getUsername());
+		return gson.toJson(user);
 	}
 
 	private boolean validateName(String name) {

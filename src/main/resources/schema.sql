@@ -13,7 +13,7 @@ CONSTRAINT primary_key PRIMARY KEY (id)
 CREATE TABLE Users (
 id SERIAL,
 name VARCHAR(60) NOT NULL,
-username VARCHAR(20) NOT NULL,
+username VARCHAR(20) NOT NULL UNIQUE,
 password VARCHAR(20) NOT NULL,
 shipping_address VARCHAR(200) NOT NULL,
 billing_address VARCHAR(200) NOT NULL,
