@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import com.google.gson.Gson;
 
 import models.User;
@@ -39,7 +38,6 @@ public class UserController {
 		if (!validateName(name) || !validateUsername(username) || password.length() < 8) {
 			throw new Exception("Invalid info");
 		}
-		
 		return repository.create(user.getName(), user.getUsername(), user.getPassword());
 	}
 	
@@ -49,8 +47,10 @@ public class UserController {
 		User user = gson.fromJson(data, User.class);
 		
 		if (!repository.verify(user.getUsername(), user.getPassword())) {
+			System.out.println(user.toString());
 			throw new Exception("invalid login");
 		}
+		
 	}
 
 	private boolean validateName(String name) {

@@ -1,13 +1,18 @@
 angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 	$routeProvider.when('/', {
         templateUrl: 'index.html',
-    }).when('/registration', {
+        controller: 'CartController'
+        }).when('/registration', {
 		templateUrl: 'registration.html',
 		controller: 'User',
 	}).when('/login', {
 		templateUrl: 'login.html',
 		controller: 'User',
-	}).otherwise({
+	}).when('/checkout', {
+		templateUrl: 'checkout.html',
+		controller: 'Checkout'
+	})
+	.otherwise({
         redirectTo: "/"
     });
 });

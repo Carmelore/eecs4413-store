@@ -20,12 +20,21 @@ form input {
 form div>div label {
 	width: 50%;
 }
-
+form {
+	display: inline-block;
+}
 form label {
 	display: block;
 	width: 50%;
 }
 
 button {
-	align-self: center;
+	align-self: center;}
+
+#checkoutCart {
+	display: inline-block;
+	border: 1px solid black;
+}
+#checkoutWrapper {
+	display: flex;
 }
