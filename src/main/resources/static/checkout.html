@@ -12,78 +12,86 @@
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
-<body >
-<h1>SHOPPITY</h1>
-    <nav>
-    <ul>
-        <li>
-    <a href="/">Home</a>
-    </li>
-    <li>
-    <a>Cart</a>
-    </li>
-        <li>
-    <a>Products</a>
-    </li>
-        <li>
-    <a href="/checkout.html">Checkout</a>
-    </li>
-            <li>
-    <a href="/checkout">Checkout2</a>
-    </li>
-    </ul>
-    </nav>
-<h1>CHECKOUT</h1>
-<div id="checkoutWrapper">
-<form ng-controller="Checkout" ng-submit="submit()" style="display: flex; flex-direction: column; gap: 1vh; width: 50%; border: 1px solid; padding: 5%;">
-<h2 >Contact Information</h2>
-<label for="email" ><input id="email" type="text" placeholder="Email" ng-model="email" /></label>
-<label for="phoneNum"><input id="phoneNum" type="text" placeHolder="Phone Number" ng-model="phoneNum" /></label>
-<h2>Shipping Information</h2>
-<label for="firstName"><input id="firstName" type="text" placeHolder="First Name" ng-model="firstName"  /></label>
-<label for="lastName"><input id="lastName" type="text" placeHolder="Last Name" ng-model="lastName" /></label>
-<label for="address"><input id="address" type="text" placeholder="Address" ng-model="address" /></label>
-<label for="optionalAddress"><input id="optionalAddress" type="text" placeholder="Apartment, suite, etc... (optional)" ng-model="optionalAddress"/></label>
-<label for="city"><input id="city" placeholder="City" ng-model="city" /></label>
-<label for="postalCode"><input id="postalCode" placeholder="Postal Code" ng-model="postalCode"/></label>
-<h2>Billing Address</h2>
-<label for="address"><input id="address" type="text" placeholder="Address" ng-model="address" /></label>
-<label for="optionalAddress"><input id="optionalAddress" type="text" placeholder="Apartment, suite, etc... (optional)" ng-model="optionalAddress"/></label>
-<label for="city"><input id="city" placeholder="City" ng-model="city" /></label>
-<label for="postalCode"><input id="postalCode" placeholder="Postal Code" ng-model="postalCode"/></label>
-<label for="province">
-<select id="province" ng-model="province">
-  <option label="ON">ON</option>
-  <option label="AB">AB</option>
-  <option label="NS">NS</option>
-  <option label="NB">NB</option>
-  <option label="MB">MB</option>
-  <option label="SK">SK</option>
-  <option label="BC">BC</option>
-  <option label="NL">NL</option>
-  <option label="QC">QC</option>
-  <option label="PE">PE</option>
-  <option label="YT">YT</option>
-  <option label="NT">NT</option>
-  <option label="NU">NU</option>
-</select>
-</label>
-<h2>Payment Information</h2>
-<div id="paymentDetails">
-<label for="cardNumber" style="display: inline-flex;">Card details</label>
-<input id="cardNumber" placeholder="1234 1234 1234 1234" />
-<div>
-<label for="cardExp"><input id="cardExp" placeholder="MM / YY" ng-model="cardExp"/></label>
-<label for="CVC"><input id="CVC" placeholder="CVC" ng-model="cvc"/></label>
-</div>
-<label for="cardName">Name on card </label>
-<input id="cardName" ng-model="cardName"/>
-</div>
-<button style="align-self: center;" type="submit" ng-click="submit()">Process order</button>
-</form>
-<div id="checkoutCart">
-<h1>Your cart:</h1>
-</div>
-</div>
+<body>
+	<h1>SHOPPITY</h1>
+	<nav>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a>Cart</a></li>
+			<li><a>Products</a></li>
+			<li><a href="/checkout.html">Checkout</a></li>
+			<li><a href="/checkout">Checkout2</a></li>
+		</ul>
+	</nav>
+	<h1>CHECKOUT</h1>
+	<div id="checkoutWrapper">
+		<form ng-controller="Checkout" ng-submit="submit()"
+			style="display: flex; flex-direction: column; gap: 1vh; width: 50%; border: 1px solid; padding: 5%;">
+			<h2>Contact Information</h2>
+			<label for="email"><input id="email" type="text"
+				placeholder="Email" ng-model="email" /></label> <label for="phoneNum"><input
+				id="phoneNum" type="text" placeHolder="Phone Number"
+				ng-model="phoneNum" /></label>
+			<h2>Shipping Information</h2>
+			<label for="firstName"><input id="firstName" type="text"
+				placeHolder="First Name" ng-model="firstName" /></label> <label
+				for="lastName"><input id="lastName" type="text"
+				placeHolder="Last Name" ng-model="lastName" /></label> <label for="address"><input
+				id="address" type="text" placeholder="Address" ng-model="address" /></label>
+			<label for="optionalAddress"><input id="optionalAddress"
+				type="text" placeholder="Apartment, suite, etc... (optional)"
+				ng-model="optionalAddress" /></label> <label for="city"><input
+				id="city" placeholder="City" ng-model="city" /></label> <label
+				for="postalCode"><input id="postalCode"
+				placeholder="Postal Code" ng-model="postalCode" /></label>
+			<h2>Billing Address</h2>
+			<label for="address"><input id="address" type="text"
+				placeholder="Address" ng-model="address" /></label> <label
+				for="optionalAddress"><input id="optionalAddress"
+				type="text" placeholder="Apartment, suite, etc... (optional)"
+				ng-model="optionalAddress" /></label> <label for="city"><input
+				id="city" placeholder="City" ng-model="city" /></label> <label
+				for="postalCode"><input id="postalCode"
+				placeholder="Postal Code" ng-model="postalCode" /></label> <label
+				for="province"> <select id="province" ng-model="province">
+					<option label="ON">ON</option>
+					<option label="AB">AB</option>
+					<option label="NS">NS</option>
+					<option label="NB">NB</option>
+					<option label="MB">MB</option>
+					<option label="SK">SK</option>
+					<option label="BC">BC</option>
+					<option label="NL">NL</option>
+					<option label="QC">QC</option>
+					<option label="PE">PE</option>
+					<option label="YT">YT</option>
+					<option label="NT">NT</option>
+					<option label="NU">NU</option>
+			</select>
+			</label>
+			<h2>Payment Information</h2>
+			<div id="paymentDetails">
+				<label for="cardNumber" style="display: inline-flex;">Card
+					details</label> <input id="cardNumber" placeholder="1234 1234 1234 1234" />
+				<div>
+					<label for="cardExp"><input id="cardExp"
+						placeholder="MM / YY" ng-model="cardExp" /></label> <label for="CVC"><input
+						id="CVC" placeholder="CVC" ng-model="cvc" /></label>
+				</div>
+				<label for="cardName">Name on card </label> <input id="cardName"
+					ng-model="cardName" />
+			</div>
+			<div id="DiscountCodes">
+				<label for="discountCode">Discount Codes</label> <input
+					id="discountCode" placeholder="SAVE MONEEEE"
+					th:field="*{discountCode}">
+			</div>
+			<button style="align-self: center;" type="submit" ng-click="submit()">Process
+				order</button>
+		</form>
+		<div id="checkoutCart">
+			<h1>Your cart:</h1>
+		</div>
+	</div>
 </body>
 </html>
