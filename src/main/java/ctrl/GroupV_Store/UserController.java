@@ -36,7 +36,7 @@ public class UserController {
 	}
 	
 	@PostMapping("/users")
-	public int user(@RequestBody String data) throws Exception {
+	public int createUser(@RequestBody String data) throws Exception {
 		Gson gson = new Gson();
 		User user = gson.fromJson(data, User.class);
 		String name = user.getName();
