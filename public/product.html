@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
 <html ng-app="Group-V_Store">
-<head> 
-    <title>Shoppity</title> 
+<head>
+    <title>Shoppity</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
 	<script src="product.js"></script>
@@ -30,40 +30,43 @@
     </li>
     </ul>
     </nav>
-    
+
 	<div ng-controller="ProductController">
 <!-- 		<h1>HERE</h1>
 		<p>{{product}}</p> -->
-		
-		<table>
-		<tr>
-			<td><b>Name: </b></td>
-			<td>{{product.name}}</td>
-		</tr>
-		<tr>
-			<td><b>Description: &nbsp &nbsp</b></td>
-			<td>{{product.description}}</td>
-		</tr>
-		<tr>
-			<td><b>Type: </b></td>
-			<td>{{product.type}}</td>
-		</tr>
-		<tr>
-			<td><b>Brand: </b></td>
-			<td>{{product.brand}}</td>
-		</tr>
-		<tr>
-			<td><b>Price: </b></td>
-			<td>${{product.price}}</td>
-		</tr>
-		<tr>
-			<td><b>Stock: </b></td>
-			<td>{{product.quantity}}</td>
-		</tr>
-		</table>
-		
+
+        <table ng-controller="ProductController">
+        <tr>
+            <td><b>Name: </b></td>
+            <td>{{product.name}}</td>
+        </tr>
+        <tr>
+            <td><b>Description: &nbsp &nbsp</b></td>
+            <td>{{product.description}}</td>
+        </tr>
+        <tr>
+            <td><b>Type: </b></td>
+            <td>{{product.type}}</td>
+        </tr>
+        <tr>
+            <td><b>Brand: </b></td>
+            <td>{{product.brand}}</td>
+        </tr>
+        <tr>
+            <td><b>Price: </b></td>
+            <td>${{product.price}}</td>
+        </tr>
+        <tr>
+            <td><b>Stock: </b></td>
+            <td>{{product.quantity}}</td>
+        </tr>
+        <tr>
+            <td><button ng-click="addToCart(product.id)">Add to Cart</button></td>
+        </tr>
+        </table>
+
 		<hr/>
-		
+
 		<form ng-submit="addReview(product.id)" autocomplete="off">
 			<h3>Leave a review!</h3>
 			<label>Name: </label>
@@ -82,14 +85,14 @@
 			<input type="submit" value="Submit" />
 		</form>
 		<p id="reviewError" class="error"></p>
-		
+
 		<hr/>
-		
+
 		<h3>Read what others have to say about this product!</h3>
 		<div ng-repeat="review in reviews track by $index">
 			<p><b>{{review.reviewer}}</b> gave {{review.stars}}/5</p>
 			<p>{{review.details}}</p>
 		</div>
-		
+
 	</div>
 </body>
