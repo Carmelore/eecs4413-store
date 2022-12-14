@@ -1,8 +1,5 @@
 angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
-	$routeProvider.when('/', {
-        templateUrl: 'index.html',
-        controller: 'CartController'
-        }).when('/registration', {
+	$routeProvider.when('/registration', {
 		templateUrl: 'registration.html',
 		controller: 'User',
 	}).when('/login', {
@@ -10,7 +7,16 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 		controller: 'User',
 	}).when('/admin', {
 		templateUrl: 'admin.html',
-	}).otherwise({
+	}).when('/cart', {
+		templateUrl: 'cart.html',
+		controller: 'CartController',
+	}).when('/checkout', {
+		templateUrl: 'checkout.html',
+		controller: 'Checkout'
+	}).when('/products', {
+		templateUrl: 'products.html',
+	})
+	.otherwise({
         redirectTo: "/"
     });
 });
