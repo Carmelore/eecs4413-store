@@ -25,3 +25,10 @@ INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('159.203.
 INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.225.144.155', '2022-12-07', 3, 'IN_CART');
 INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.8.33.173', '2022-12-05', 4, 'PURCHASED');
 INSERT INTO visits(ip_address, created_at, product_id, status) VALUES ('54.8.33.173', '2022-12-04', 4, 'VIEWED');
+
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('anonymous', 5, 'cool', 1);
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('anonymous', 1, 'not cool', 1);
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('justin', 3, 'justin', 2);
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('anonymous', 2, 'I mean, I guess you tried?', 3);
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('nice person', 5, '10/10 would purchase again', 4);
+INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('mean person', 1, null, 4);
