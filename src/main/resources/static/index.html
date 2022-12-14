@@ -9,23 +9,23 @@
     <script src="user.js"></script>
     <script src="services.js"></script>
     <script src="stats.js"></script>
+    <script src="cart.js"></script>
 </head>
-<body ng-app="Group-V_Store" ng-view>
-    <a href="#/login">Login</a><br/>
-    <a href="#/registration">Registration</a>
-    <a href="#/checkout">Checkout</a>
-    <div ng-controller="CartController as cartCtrl">
-		<div ng-repeat="product in products" style="" >
-		  <h3>{{ product.name }}</h3>
-		  <p>{{ product.description }}</p>
-		  <p>Price: {{product.price}}</p>
-		  <button ng-click="addToCart(product)" ng-controller="CartController as cartCtrl">Add to Cart</button>
-		</div>
-    </div>
-  <div ng-controller="CartController as cartCtrl">
-    <h2>Cart</h2>
-    <p>Total Quantity: {{ cartCtrl.cart.getTotalQuantity() }}</p>
-    <p>Total Price: {{ cartCtrl.cart.getTotalPrice() | currency }}</p>
-  </div>
+<body ng-app="Group-V_Store">
+	<h1>SHOPPITY</h1>
+    <nav>
+	    <ul>
+	        <li><a href="/">Home</a></li>
+	        <li><a href="#/login">Login</a><li/>
+	        <li><a href="#/registration">Registration</a><li>
+	        <li><a href="#/cart">Cart</a></li>
+		    <li><a href="products.html">Products</a></li>
+		    <li><a href="checkout.html">Checkout</a></li>
+		    <li><a href="#/checkout">Checkout2</a></li>
+	    </ul>
+    </nav>
+    
+    <section ng-view>
+    </section>
 </body>
 </html>

@@ -1,0 +1,5 @@
+<div ng-controller="CartController as cartCtrl">
+    <h2>Cart</h2>
+    <p>Total Quantity: {{ cartCtrl.cart.getTotalQuantity() }}</p>
+    <p>Total Price: {{ cartCtrl.cart.getTotalPrice() | currency }}</p>
+</div>
