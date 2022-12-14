@@ -33,4 +33,26 @@ public class Review {
 	public int getProductId() {
 		return productId;
 	}
+	
+	public void setReviewer(String reviewer) {
+		this.reviewer = reviewer;
+	}
+
+	public void setStars(int stars) {
+		this.stars = stars;
+	}
+
+	public void setDetails(String details) {
+		this.details = details;
+	}
+
+	public void setProductId(int productId) {
+		this.productId = productId;
+	}
+
+	@Override
+	public String toString() {
+		return "Review [reviewer=" + reviewer + ", stars=" + stars + ", details=" + details + ", productId=" + productId
+				+ "]";
+	}
 }

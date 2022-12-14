@@ -7,6 +7,12 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 		.then(function(response) {
 			$scope.product = response.data;
 		});
+	
+	$http.get(`/reviews?id=${urlParams.get('id')}`)
+		.then(function(response) {
+			console.log(response);
+			$scope.reviews = response.data;
+		})
 		
 	$scope.addReview = function(productId) {
 		let errorMessages = document.getElementsByClassName("error");
@@ -20,14 +26,14 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 		}
 		
 		let onSuccess = function() {
-			location.reload;
+			location.reload();
         };
         
         let onError = function() {
 			document.getElementById("reviewError").innerHTML = "Error submitting review, please try again";
 		};
 		
-		$http.post('/review', {reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, product: productId})
+		$http.post('/reviews', {reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, productId: productId})
 			.success(onSuccess)
 			.error(onError);
 	}

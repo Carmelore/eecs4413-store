@@ -62,7 +62,10 @@ public class ProductController {
 	}
 	
 	@GetMapping("/reviews")
-	public String getProductReviews(int productId) {
-		return "";
+	public String getProductReviews(@RequestParam(value = "id") int productId) {
+		List<Review> reviews = repository.findReviews(productId);
+		
+		Gson gson = new Gson();
+		return gson.toJson(reviews);
 	}
 }
