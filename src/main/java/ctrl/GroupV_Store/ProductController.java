@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -16,6 +18,7 @@ import jakarta.servlet.http.HttpSession;
 import jakarta.websocket.Session;
 import models.Product;
 import models.ProductJdbcRepository;
+import models.Review;
 
 
 @RestController
@@ -48,5 +51,18 @@ public class ProductController {
 		}
 		Gson gson = new Gson();
 		return gson.toJson(products);
+	}
+	
+	@PostMapping("/reviews")
+	public void addReview(@RequestBody String data) {
+		Gson gson = new Gson();
+		Review review = gson.fromJson(data, Review.class);
+		
+		repository.addReview(review.getReviewer(), review.getStars(), review.getDetails(), review.getProductId());
+	}
+	
+	@GetMapping("/reviews")
+	public String getProductReviews(int productId) {
+		return "";
 	}
 }

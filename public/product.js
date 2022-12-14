@@ -7,20 +7,33 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 		.then(function(response) {
 			$scope.product = response.data;
 		});
-	});
-//	$scope.add = function() {
-//		let hasNewRecord = false;
-//		
-//		angular.forEach($scope.products, function (product) {
-//			if (product.id == null && !product.deleted) {
-//				hasNewRecord = true;
-//			}
-//		});
-//		
-//		if (!hasNewRecord) {
-//			$scope.employees.push({id:null});
-//		}
-//	};
-//	
-//	$scope.save = function() {
-//	}
+		
+	$scope.addReview = function(productId) {
+		let errorMessages = document.getElementsByClassName("error");
+		[].forEach.call(errorMessages, (message) => {
+			message.innerHTML = "";
+		});
+		
+		if (!validateName($scope.review.reviewer)) {
+			document.getElementById("reviewerError").innerHTML = "Invalid name";
+			return;
+		}
+		
+		let onSuccess = function() {
+			location.reload;
+        };
+        
+        let onError = function() {
+			document.getElementById("reviewError").innerHTML = "Error submitting review, please try again";
+		};
+		
+		$http.post('/review', {reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, product: productId})
+			.success(onSuccess)
+			.error(onError);
+	}
+});
+
+function validateName(name) {
+	let pattern = new RegExp("^[a-zA-ZÀ-ž-' ]+$");
+	return pattern.test(name);
+}

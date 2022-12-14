@@ -40,3 +40,12 @@ product_id INT NOT NULL,
 status VARCHAR(12) NOT NULL DEFAULT 'VIEWED',
 FOREIGN KEY (product_id) REFERENCES Products
 );
+
+CREATE TABLE Reviews (
+id SERIAL,
+reviewer VARCHAR(20) NOT NULL,
+stars INT NOT NULL,
+details VARCHAR(250),
+product_id INT NOT NULL,
+FOREIGN KEY (product_id) REFERENCES Products
+);
