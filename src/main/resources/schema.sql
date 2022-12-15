@@ -52,7 +52,7 @@ FOREIGN KEY (product_id) REFERENCES Products
 
 CREATE TABLE Discounts (
 id SERIAL,
-code VARCHAR(15) NOT NULL,
+code VARCHAR(15) NOT NULL UNIQUE,
 discount INTEGER NOT NULL,
 required_spending INTEGER NOT NULL,
 discount_type enum('percent','total') NOT NULL,
