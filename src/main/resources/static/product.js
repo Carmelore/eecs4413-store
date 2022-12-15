@@ -1,4 +1,4 @@
-angular.module('Group-V_Store', []).controller('ProductController', function($scope, $http, $window) {
+angular.module('Group-V_Store').controller('ProductController', function($scope, $http, $window) {
 	// get list of products
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);

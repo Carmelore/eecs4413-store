@@ -11,27 +11,6 @@
 	<link rel="stylesheet" href="pages.css" />
 </head>
 <body>
-<h1>SHOPPITY</h1>
-    <nav>
-    <ul>
-        <li>
-    <a href="/">Home</a>
-    </li>
-    <li>
-    <a>Cart</a>
-    </li>
-        <li>
-    <a href="/products.html">Products</a>
-    </li>
-        <li>
-    <a href="/checkout.html">Checkout</a>
-    </li>
-                <li>
-    <a href="/checkout">Checkout2</a>
-    </li>
-    </ul>
-    </nav>
-
     <div ng-controller="ProductsController">
     	<table>
     		<tr>
@@ -45,6 +24,7 @@
     			<td>${{product.price}}</td>
     			<td>{{product.type}}</td>
     			<td>{{product.brand}}</td>
+    			<td><button ng-click="addToCart(product)">Add to cart</button></td>
     		</tr>
     		
     	</table>

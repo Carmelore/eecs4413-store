@@ -10,7 +10,13 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 	}).when('/cart', {
 		templateUrl: 'cart.html',
 		controller: 'CartController',
-	}).otherwise({
+	}).when('/checkout', {
+		templateUrl: 'checkout.html',
+		controller: 'Checkout'
+	}).when('/products', {
+		templateUrl: 'products.html',
+	})
+	.otherwise({
         redirectTo: "/"
     });
 });
