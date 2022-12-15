@@ -27,13 +27,14 @@ button {
 #checkoutCart {
 	display: inline-block;
 	border: 1px solid black;
+	width: 40%;
+	padding: 5%;
 }
 
 #checkoutWrapper {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 1vh;
-	width: 80%;
 	margin: auto;
 	border: 1px solid;
 	padding: 5%;
