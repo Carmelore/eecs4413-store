@@ -1,18 +1,5 @@
-var app = angular.module('Group-V_Store', ['ngRoute']);
-var products = angular.module('Group-V_Store', []);
-app.config(['$routeProvider', function($routeProvider) {
-                $routeProvider.when('/checkout.html', {
-                    templateUrl: 'checkout.html',
-                    controller: 'CheckoutController'
-                }).otherwise({
-                    redirectTo: '/'
-                });
-            }]);
-app.config(['$locationProvider', function($locationProvider){
-    $locationProvider.html5Mode(true);
-}]);
-app.controller('CheckoutController', function($scope) {
-    $scope.message = "Shoppity";
-});
-
-
+let cart = sessionStorage.getItem("cart");
+console.log(cart);
+if (cart == null || !cart) {
+	sessionStorage.setItem("cart", JSON.stringify({items: [], totalQuantity: 0, totalPrice: 0}))
+}
