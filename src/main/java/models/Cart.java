@@ -14,7 +14,9 @@ public class Cart {
 	  public Cart() {
 	    this.items = new ArrayList<Product>();
 	  }
-
+	  public Cart(List<Product> products) {
+		  this.items = (ArrayList<Product>) products;
+	  }
 	  public void addItem(Product product) {
 	    if (product == null || product.getAmount() <= 0) {
 	      throw new IllegalArgumentException("Invalid product or amount");
