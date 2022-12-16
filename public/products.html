@@ -12,18 +12,6 @@
 </head>
 <body>
 	<h1>SHOPPITY</h1>
-		<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/cart.html">Cart</a></li>
-			<li><a href="/products.html">Products</a></li>
-			<li><a href="/checkout.html">Checkout</a></li>
-			<li><a href="/checkout">Checkout2</a></li>
-			<li><a href="/login.html">Login</a></li>
-			<li><a href="/registration.html">Registration</a></li>
-			<li><a href="/admin.html">Admin</a></li>
-		</ul>
-	</nav>
 	<nav>
 		<ul>
 			<li><a href="/">Home</a></li>
@@ -31,6 +19,9 @@
 			<li><a href="/products.html">Products</a></li>
 			<li><a href="/checkout.html">Checkout</a></li>
 			<li><a href="/checkout">Checkout2</a></li>
+			<li><a href="#login">Login</a></li>
+			<li><a href="#registration">Registration</a></li>
+			<li><a href="#admin">Admin</a></li>
 		</ul>
 	</nav>
 	<div ng-controller="ProductsController">
@@ -50,7 +41,7 @@
 			</tr>
 		</table>
 	</div>
-		<hr>
+	<hr>
 	<div class="searchByType">
 		<form onsubmit="searchByType()">
 			<input id="type" type="text" placeholder="Type..." />
