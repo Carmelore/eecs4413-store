@@ -26,8 +26,7 @@
 		</ul>
 	</nav>
 	<h1>CHECKOUT</h1>
-	<form action="#" method="POST" th:action="@{/checkout}"
-		th:object="${checkout}"
+	<form
 		style="display: flex; flex-direction: column; gap: 1vh; width: 50%; margin: auto; border: 1px solid; padding: 5%;">
 		<h2>Contact Information</h2>
 		<label for="email"><input id="email" type="text"
@@ -59,10 +58,25 @@
 			<label for="cardName">Name on card </label> <input id="cardName"
 				th:field="*{cardName}" />
 		</div>
-		<button style="align-self: center;" ng-click="submitOrder();">Process
-			order</button>
+		<button style="align-self: center;" ng-click="submitOrder();">Process order</button>
+			<div ng-controller="CartController as cartCtrl">
+			        <a href="#/login">Login</a><br/>
+			    <a href="#/registration">Registration</a><br/>
+			    <a href="#/admin">Admin</a><br/>
+			        <a href="#/checkout">Checkout</a><br/>
+			        <a href="#/cart">Cart</a><br/>
+			    <h2>Cart</h2>
+			       <div ng-repeat="items in cart.items">
+			       <p>{{ items.name }}</p>
+			       <p>{{ items.price }}</p>
+			       <p>{{ items.brand }}</p>
+			       <p><button ng-click="updateQuantity(items, items.amount - 1)">-</button>{{ items.amount }}<button ng-click="updateQuantity(items, items.amount + 1)">+</button></p>
+			       <button ng-click="removeFromCart(items)">Remove</button>
+			       </div>
+			       <button onclick="e => e.preventDefault()5" ng-click="clearCart()">Clear cart</button>
+			    <p>Total Quantity: {{ cart.totalQuantity }}</p>
+			    <p>Total Price: {{ cart.totalPrice | number:2 }}</p>
+			</div>
 	</form>
-	<div ng-controller="CheckoutController"></div>
-
 </body>
 </html>
