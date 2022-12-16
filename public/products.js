@@ -8,11 +8,11 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 		.then(function(response) {
 			$scope.products = response.data;
 		});
-		$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
-		$scope.addToCart = (product) => {
+	$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
+	$scope.addToCart = (product) => {
 		const findProduct = $scope.cart.items.findIndex(e => e.name === product.name && e.brand === product.brand && e.id === product.id);
 		console.log(findProduct);
-		if (findProduct != -1){
+		if (findProduct != -1) {
 			console.log($scope.cart.items[findProduct].amount);
 			$scope.cart.items[findProduct].amount += 1;
 		} else {
@@ -27,7 +27,7 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 	$scope.logVisit = function(productId, status) {
 		$http.get('https://api.ipify.org/?format=json')
 			.then((response) => {
-				$http.post('/visits', {ip_address: response.data.ip, product: productId, status: status});
+				$http.post('/visits', { ip_address: response.data.ip, product: productId, status: status });
 			});
 	}
 });
