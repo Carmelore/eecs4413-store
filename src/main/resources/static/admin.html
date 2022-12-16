@@ -33,9 +33,9 @@
 	</div>
 	<div>
 		<h2>Discount Code New</h2>
-		<form ng-controller="Discount" ng-submit="login()" autocomplete="off">
+		<form ng-controller="Discount" ng-submit="createDiscount()" autocomplete="off">
 		<label for="code">New Code:</label>
-		<input type="text" name="code" ng-model="code" required></input>
+		<input type="text" name="code" ng-model="code" maxlength="15" pattern="[a-zA-Z0-9]+" required></input>
 		<br/>
 		<label for="discount">Discount Size:</label>
 		<input type="number" min="0" max="50" name="discount" ng-model="discount" required></input>
@@ -46,6 +46,7 @@
 		<label for="total">Total</label>
 		<input type="radio" id="percent" name="type" value="percent" ng-model="type" required></input>
 		<label for="percent">Percent</label>
+		<input type="submit" value="CreateDiscount"/>
 		</form>
 	</div>
 </div>
