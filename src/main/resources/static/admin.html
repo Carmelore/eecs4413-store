@@ -13,7 +13,7 @@
 			</tr>
 		</table>
 	</div>
-	<br/>
+	<br />
 	<div>
 		<h2>Visits</h2>
 		<table>
@@ -30,5 +30,22 @@
 				<td>{{visit.status}}</td>
 			</tr>
 		</table>
+	</div>
+	<div>
+		<h2>Discount Code New</h2>
+		<form ng-controller="Discount" ng-submit="login()" autocomplete="off">
+		<label for="code">New Code:</label>
+		<input type="text" name="code" ng-model="code" required></input>
+		<br/>
+		<label for="discount">Discount Size:</label>
+		<input type="number" min="0" max="50" name="discount" ng-model="discount" required></input>
+		<label for="required_spending">Required Spending:</label>
+		<input type="number" min="0" max="50" name="required_spending" ng-model="required_spending" required></input>
+		<br/>
+		<input type="radio" id="total" name="type" value="total" ng-model=type required></input>
+		<label for="total">Total</label>
+		<input type="radio" id="percent" name="type" value="percent" ng-model="type" required></input>
+		<label for="percent">Percent</label>
+		</form>
 	</div>
 </div>
