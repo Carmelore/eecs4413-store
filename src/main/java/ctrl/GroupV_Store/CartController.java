@@ -20,44 +20,46 @@ import models.Product;
 
 @RestController
 @RequestMapping("/api/cart")
-@SessionAttributes({"cart"})
+@SessionAttributes({ "cart" })
 public class CartController {
-	  private Gson gson = new Gson();
-  @ModelAttribute("cart")
-  public Cart cart () {
-	  return new Cart();
-  }
-  @GetMapping
-  public Cart getCart(@SessionAttribute(required = false) Cart cart) {
-	  if (cart == null) {
-		  cart = new Cart();
-		  return cart;
-	  }
-    return cart;
-  }
+	private Gson gson = new Gson();
 
-  @PostMapping("/add")
-  public Cart addToCart(@SessionAttribute(required = false) Cart cart, @RequestBody Map<String, String> requestBody) {
-	    // Parse the request body as a JSON object
-	    System.out.println(requestBody.get("cart"));
-	    System.out.println(requestBody.keySet());
-	    if (cart == null) {
-	      // Initialize an empty Cart object if one does not exist in the session
-	      cart = new Cart();
-	    }
-	    return cart;
-	  }
+	@ModelAttribute("cart")
+	public Cart cart() {
+		return new Cart();
+	}
 
-  @PostMapping("/remove")
-  public Cart removeFromCart(@SessionAttribute Cart cart, @RequestBody Product product) {
-    cart.removeItem(product);
-    return cart;
-  }
+	@GetMapping
+	public Cart getCart(@SessionAttribute(required = false) Cart cart) {
+		if (cart == null) {
+			cart = new Cart();
+			return cart;
+		}
+		return cart;
+	}
 
-  @PostMapping("/update")
-  public Cart updateCart(@SessionAttribute Cart cart, @RequestBody Product product, @RequestBody int quantity) {
-    cart.updateQuantity(product, quantity);
-    return cart;
-  }
+	@PostMapping("/add")
+	public Cart addToCart(@SessionAttribute(required = false) Cart cart, @RequestBody Map<String, String> requestBody) {
+		// Parse the request body as a JSON object
+		System.out.println(requestBody.get("cart"));
+		System.out.println(requestBody.keySet());
+		if (cart == null) {
+			// Initialize an empty Cart object if one does not exist in the session
+			cart = new Cart();
+		}
+		return cart;
+	}
+
+	@PostMapping("/remove")
+	public Cart removeFromCart(@SessionAttribute Cart cart, @RequestBody Product product) {
+		cart.removeItem(product);
+		return cart;
+	}
+
+	@PostMapping("/update")
+	public Cart updateCart(@SessionAttribute Cart cart, @RequestBody Product product, @RequestBody int quantity) {
+		cart.updateQuantity(product, quantity);
+		return cart;
+	}
 
 }
