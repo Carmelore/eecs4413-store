@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html ng-app="Group-V_Store">
+<head> 
+    <title>Shoppity</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+	<script src="product.js"></script>
+	<link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+	<table ng-controller="ProductController">
+	<tr>
+		<td><b>Name: </b></td>
+		<td>{{product.name}}</td>
+	</tr>
+	<tr>
+		<td><b>Description: &nbsp &nbsp</b></td>
+		<td>{{product.description}}</td>
+	</tr>
+	<tr>
+		<td><b>Type: </b></td>
+		<td>{{product.type}}</td>
+	</tr>
+	<tr>
+		<td><b>Brand: </b></td>
+		<td>{{product.brand}}</td>
+	</tr>
+	<tr>
+		<td><b>Price: </b></td>
+		<td>${{product.price}}</td>
+	</tr>
+	<tr>
+		<td><b>Stock: </b></td>
+		<td>{{product.quantity}}</td>
+	</tr>
+	<tr>
+		<td><button ng-click="addToCart(product.id)">Add to Cart</button></td>
+	</tr>
+	</table>
+	
+</body>
