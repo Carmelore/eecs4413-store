@@ -1,4 +1,4 @@
-angular.module('Group-V_Store', []).controller('ProductController', function($scope, $http, $window) {
+angular.module('Group-V_Store', []).controller('ProductsController', function($scope, $http, $window) {
 	// get list of products
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
@@ -24,7 +24,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			ipa += Math.floor(Math.random() * 999 + 1);
 
 			$http.post('/visits', { ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED' });
-		});
+		})
 
 	$http.get(`/reviews?id=${urlParams.get('id')}`)
 		.then(function(response) {
@@ -36,7 +36,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 		let errorMessages = document.getElementsByClassName("error");
 		[].forEach.call(errorMessages, (message) => {
 			message.innerHTML = "";
-		});
+		})
 
 		if (!validateName($scope.review.reviewer)) {
 			document.getElementById("reviewerError").innerHTML = "Invalid name";
@@ -45,19 +45,24 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 
 		let onSuccess = function() {
 			location.reload();
-		};
+		}
 
 		let onError = function() {
 			document.getElementById("reviewError").innerHTML = "Error submitting review, please try again";
-		};
+		}
 
 		$http.post('/reviews', { reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, productId: productId })
 			.success(onSuccess)
 			.error(onError);
+	}
 
-		$scope.addToCart = function(product) {
+	$scope.addToCart = function(product) {
+		console.log("adding");
+		if ($window.sessionStorage.getItem("cart") == null) {
+			$window.sessionStorage.setItem("cart", JSON.stringify([product]));
+		} else {
+			console.log(cart);
 			const findProduct = $scope.cart.items.findIndex(e => e.name === product.name && e.brand === product.brand && e.id === product.id);
-			console.log(findProduct);
 			if (findProduct != -1) {
 				console.log($scope.cart.items[findProduct].amount);
 				$scope.cart.items[findProduct].amount += 1;
@@ -68,8 +73,8 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			$scope.cart.totalQuantity += 1;
 			$scope.cart.totalPrice += product.price
 			sessionStorage.setItem("cart", JSON.stringify($scope.cart));
-
 		}
+
 	}
 });
 function validateName(name) {
