@@ -10,21 +10,11 @@
 <script src="checkout.js"></script>
 <script src="index.js"></script>
 
-<link rel="stylesheet" href="checkout.css" />
+
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
 </head>
 <body>
-	<h1>SHOPPITY</h1>
-	<nav>
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a>Cart</a></li>
-			<li><a href="/products.html">Products</a></li>
-			<li><a href="/checkout.html">Checkout</a></li>
-			<li><a href="/checkout">Checkout2</a></li>
-		</ul>
-	</nav>
 	<h1>CHECKOUT</h1>
 	<form action="#" method="POST" th:action="@{/checkout}"
 		th:object="${checkout}"

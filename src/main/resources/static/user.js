@@ -1,4 +1,4 @@
-angular.module('Group-V_Store').controller('User', function($scope, $http, $window) {
+angular.module('Group-V_Store').controller('User', function($scope, $http, $window, $location) {
 	$http.get('/users')
 		.then(function(response) {
 			$scope.users = response.data;
@@ -48,7 +48,8 @@ angular.module('Group-V_Store').controller('User', function($scope, $http, $wind
 		if (error) return;
 		
 		let onSuccess = function() {
-			window.location.href = '/login.html';
+			$scope.user = null;
+			$location.path('/login');
         };
         
         let onError = function(data, status, headers, config) {
