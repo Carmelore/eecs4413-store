@@ -29,15 +29,4 @@ public class ProductJdbcRepository {
 		List<Product> results = jdbcTemplate.query("select * from Products where brand=?", new BeanPropertyRowMapper<>(Product.class), brand);
 		return results;
 	}
-	
-	public int addReview(String reviewer, int stars, String details, int productId) {
-		int result = jdbcTemplate.update("insert into Reviews(reviewer, stars, details, product_id) values (?,?,?,?)",
-				reviewer, stars, details, productId);
-		return result;
-	}
-	
-	public List<Review> findReviews(int productId) {
-		List<Review> results = jdbcTemplate.query("select * from Reviews where product_id=?", new BeanPropertyRowMapper<>(Review.class), productId);
-		return results;
-	}
 }

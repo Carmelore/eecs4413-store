@@ -6,8 +6,6 @@ import java.util.StringJoiner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.google.gson.Gson;
-
 import models.StatsJdbcRepository;
 //import models.Visit;
 
