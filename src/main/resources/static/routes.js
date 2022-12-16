@@ -12,8 +12,6 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 		controller: "CartController"
 	}).when('/checkout', {
 		templateUrl: 'checkout.html',
-	}).when('/product', {
-		templateUrl: 'product.html',
 	}).when('/admin', {
 		templateUrl: 'admin.html',
 	}).otherwise({

@@ -1,11 +1,18 @@
-angular.module('Group-V_Store').controller('ProductsController',
-	['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location) {
-		const type = $routeParams.type || "";
-		const brand = $routeParams.brand || "";
-		
-		$http.get(`/products?type=${type}&brand=${brand}`)
-			.then(function(response) {
-				$scope.products = response.data;
+angular.module('Group-V_Store').controller('ProductsController', function($scope, $http) {
+	const queryString = window.location.search;
+	const urlParams = new URLSearchParams(queryString);
+	const type = urlParams.get('type') ?? '';
+	const brand = urlParams.get('brand') ?? '';
+	
+	$http.get(`http://localhost:8080/products?type=${type}&brand=${brand}`)
+		.then(function(response) {
+			$scope.products = response.data;
+		});
+	
+	$scope.logVisit = function(productId, status) {
+		$http.get('https://api.ipify.org/?format=json')
+			.then((response) => {
+				$http.post('/visits', {ip_address: response.data.ip, product: productId, status: status});
 			});
 		
 		$scope.searchByBrand = function() {

@@ -59,8 +59,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 			contactInfo: {
 				email: $scope.email,
 				phoneNumber: $scope.phoneNum
-			},
-			createdAt: Date.now()
+			}
 			
 		}
 				if ($scope.sameAddress){
@@ -86,5 +85,6 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 	}
 
 	
-})
+});
 
+let count = 0;
