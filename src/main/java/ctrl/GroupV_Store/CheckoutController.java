@@ -1,6 +1,7 @@
 package ctrl.GroupV_Store;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,7 @@ public class CheckoutController {
 		System.out.println(data.keySet());
 		System.out.println(data.get("items") + "REQUEST BODY");
 		Gson gson = new Gson();
-		@SuppressWarnings("unchecked")
-		ArrayList<Product> items = gson.fromJson( data.get("items"), ArrayList.class);
+		List<Product> items = gson .fromJson( data.get("items"), List.class);
 		System.out.println(items.get(0).getName());
 		return "success";
 	}

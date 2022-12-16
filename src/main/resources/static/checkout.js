@@ -59,8 +59,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 			contactInfo: {
 				email: $scope.email,
 				phoneNumber: $scope.phoneNum
-			},
-			createdAt: Date.now()
+			}
 			
 		}
 				if ($scope.sameAddress){
@@ -77,14 +76,10 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		$http.post("http://localhost:8080/checkout", JSON.stringify(data))
 		.then(response => {
 			console.log(response.data);
-			if(response.data === "success"){ 
-				alert("Order submitted");
-				window.location.replace('/');
-				sessionStorage.setItem("cart", JSON.parse({items: [], totalQuantity: 0, totalPrice: 0}))
-			}
 		})
 	}
 
 	
-})
+});
 
+let count = 0;
