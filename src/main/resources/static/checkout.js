@@ -28,10 +28,20 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 	})
 	$scope.cart = JSON.parse(sessionStorage.getItem("cart"))
 	$scope.user = JSON.parse(sessionStorage.getItem("user"));
+	console.log($scope.user);
 	$scope.count = 0;
 	$scope.submit = () => {
-
+		let dateObj = new Date();
+		let month = dateObj.getUTCMonth() + 1; //months from 1-12
+		let day = dateObj.getUTCDate();
+		let year = dateObj.getUTCFullYear();
+		let newdate = year + "/" + month + "/" + day;
+		if (!$scope.user){
+			alert("You must sign in to complete your order")
+			return;
+		}
 		const data = {
+			user: $scope.user,
 			items: $scope.cart.items,
 			shippingInfo: {
 				firstName: $scope.firstName,
