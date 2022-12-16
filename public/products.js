@@ -1,4 +1,4 @@
-angular.module('Group-V_Store').controller('ProductsController', function($scope, $http) {
+angular.module('Group-V_Store', []).controller('ProductsController', function($scope, $http) {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	const type = urlParams.get('type') ?? '';
@@ -22,6 +22,13 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 		$scope.cart.totalQuantity += 1;
 		$scope.cart.totalPrice += product.price
 		sessionStorage.setItem("cart", JSON.stringify($scope.cart));
+	}
+	
+	$scope.logVisit = function(productId, status) {
+		$http.get('https://api.ipify.org/?format=json')
+			.then((response) => {
+				$http.post('/visits', {ip_address: response.data.ip, product: productId, status: status});
+			});
 	}
 });
 
