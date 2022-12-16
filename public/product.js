@@ -3,7 +3,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
 	
-	$http.get(`http://localhost:8080/product?id=${urlParams.get('id')}`)
+	$http.get(`/product?id=${urlParams.get('id')}`)
 		.then(function(response) {
 			$scope.product = response.data;
 		});
