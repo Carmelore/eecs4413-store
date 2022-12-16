@@ -8,11 +8,11 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			$scope.product = response.data;
 
 			// can't get this working due to a CORS issue
-		//	$http.get('https://api.ipify.org/?format=json')
-		//		.then((response) => {
-		//			let ipa = response.data.ip;
-		//			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
-		//		});
+			//	$http.get('https://api.ipify.org/?format=json')
+			//		.then((response) => {
+			//			let ipa = response.data.ip;
+			//			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
+			//		});
 
 			// so just randomly generating IP addresses instead :(
 
@@ -23,7 +23,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			}
 			ipa += Math.floor(Math.random() * 999 + 1);
 
-			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
+			$http.post('/visits', { ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED' });
 		});
 
 	$http.get(`/reviews?id=${urlParams.get('id')}`)
@@ -45,13 +45,13 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 
 		let onSuccess = function() {
 			location.reload();
-        };
+		};
 
-        let onError = function() {
+		let onError = function() {
 			document.getElementById("reviewError").innerHTML = "Error submitting review, please try again";
 		};
 
-		$http.post('/reviews', {reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, productId: productId})
+		$http.post('/reviews', { reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, productId: productId })
 			.success(onSuccess)
 			.error(onError);
 
@@ -59,10 +59,9 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			//$window.sessionStorage.removeItem("cart");
 			if ($window.sessionStorage.getItem("cart") === null) {
 				$window.sessionStorage.setItem("cart", JSON.stringify([productId]));
-			}
-			else {
+			} else {
 				let cart = JSON.parse($window.sessionStorage.getItem("cart"));
-				cart.push(productId);
+				cart.items.push(productId);
 				$window.sessionStorage.setItem("cart", JSON.stringify(cart));
 			}
 			console.log(JSON.parse($window.sessionStorage.getItem("cart")));
@@ -70,20 +69,6 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 
 	}
 });
-
-$scope.addToCart = function(productId) {
-	//$window.sessionStorage.removeItem("cart");
-	if ($window.sessionStorage.getItem("cart") === null) {
-		$window.sessionStorage.setItem("cart", JSON.stringify([productId]));
-	}
-	else {
-		let cart = JSON.parse($window.sessionStorage.getItem("cart"));
-		cart.push(productId);
-		$window.sessionStorage.setItem("cart", JSON.stringify(cart));
-	}
-	console.log(JSON.parse($window.sessionStorage.getItem("cart")));
-}
-
 function validateName(name) {
 	let pattern = new RegExp("^[a-zA-ZÀ-ž-' ]+$");
 	return pattern.test(name);
