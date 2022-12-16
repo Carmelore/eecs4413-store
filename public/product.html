@@ -25,11 +25,11 @@
 			<li><a href="/admin">Admin</a></li>
 		</ul>
 	</nav>
-	<div ng-controller="ProductsController">
+	<div ng-controller="ProductController">
 		<!-- 		<h1>HERE</h1>
 		<p>{{product}}</p> -->
 
-		<table>
+		<table ng-controller="ProductController">
 			<tr>
 				<td><b>Name: </b></td>
 				<td>{{product.name}}</td>
