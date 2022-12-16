@@ -1,13 +1,22 @@
-<div ng-controller="CartController as cartCtrl">
-    <h2>Cart</h2>
-       <div ng-repeat="items in cart.items">
-       <p>{{ items.name }}</p>
-       <p>{{ items.price }}</p>
-       <p>{{ items.brand }}</p>
-       <p><button ng-click="updateQuantity(items, items.amount - 1)">-</button>{{ items.amount }}<button ng-click="updateQuantity(items, items.amount + 1)">+</button></p>
-       <button ng-click="removeFromCart(items)">Remove</button>
-       </div>
-       <button ng-click="clearCart()">Clear cart</button>
-    <p>Total Quantity: {{ cart.totalQuantity }}</p>
-    <p>Total Price: ${{ cart.totalPrice | number:2 }}</p>
-</div>
+<!DOCTYPE HTML>
+<html ng-app="Group-V_Store">
+<head> 
+    <title>Group V Store</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
+    <script src="cart.js"></script>
+</head>
+<body  ng-controller="CartController">
+    <div ng-repeat="items in cart.items">
+    <p>{{items.name}}</p>
+        <p>{{items.price}}</p>
+        <p>{{items.brand}}</p>
+        <button>-</button>
+                <p>{{items.amount}}</p>
+                <button>+</button>
+        
+    <button>Remove</button>
+    </div>
+</body>
+</html>

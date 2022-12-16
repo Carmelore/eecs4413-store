@@ -1,33 +1,21 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-	<title>Group V Store</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
+    <title>Group V Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.min.js"></script>
-	<script src="routes.js"></script>
-	<script src="user.js"></script>
-	<script src="stats.js"></script>
-    <script src="discount.js"></script>
-    <script src="products.js"></script>
-    <script src="product.js"></script>
-    <script src="checkout.js"></script>
+    <script src="routes.js"></script>
+    <script src="user.js"></script>
+    <script src="stats.js"></script>
     <script src="cart.js"></script>
     <script src="index.js"></script>
-	<link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="Group-V_Store">
-	<h1>SHOPPITY</h1>
-	<ul>
-<!-- 		<li><a href="#/cart">Shopping Cart</a></li> there is no cart yet -->
-		<li><a href="#/">Catalogue</a></li>
-		<li><a href="#/checkout">Checkout</a></li>
-		<li><a href="#/login">Login</a></li>
-		<li><a href="#/registration">Registration</a></li>
-		<li><a href="#/admin">Admin</a></li>
-	</ul>
-	<div ng-view>
-	</div>
+<body ng-app="Group-V_Store" ng-view>
+    <a href="#/login">Login</a><br/>
+    <a href="#/registration">Registration</a><br/>
+    <a href="#/admin">Admin</a><br/>
+        <a href="#/checkout>Checkout">Checkout</a><br/>
+        <a href="#/cart">Cart</a><br/>
 </body>
 </html>

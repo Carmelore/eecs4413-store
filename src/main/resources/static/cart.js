@@ -1,5 +1,16 @@
 angular.module('Group-V_Store').controller('CartController', ['$scope', '$http', function($scope, $http, $window) {
     $scope.cart = JSON.parse(sessionStorage.getItem("cart"));
+    	if ($scope.cart == null){
+		sessionStorage.setItem("cart", JSON.stringify({items: [], totalPrice: 0, totalQuantity: 0}));
+		$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
+	}
+			console.log($scope.cart, 'cart');
+
+	$scope.resetCart = () => {
+		sessionStorage.setItem("cart", null);
+		
+	}
+
     // Remove an item from the cart
     console.log($scope.cart, "CART");
     $scope.removeFromCart = function(product) {
