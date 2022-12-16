@@ -55,18 +55,21 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			.success(onSuccess)
 			.error(onError);
 
-		$scope.addToCart = function(productId) {
-			//$window.sessionStorage.removeItem("cart");
-			if ($window.sessionStorage.getItem("cart") === null) {
-				$window.sessionStorage.setItem("cart", JSON.stringify([productId]));
+		$scope.addToCart = function(product) {
+			const findProduct = $scope.cart.items.findIndex(e => e.name === product.name && e.brand === product.brand && e.id === product.id);
+			console.log(findProduct);
+			if (findProduct != -1) {
+				console.log($scope.cart.items[findProduct].amount);
+				$scope.cart.items[findProduct].amount += 1;
 			} else {
-				let cart = JSON.parse($window.sessionStorage.getItem("cart"));
-				cart.items.push(productId);
-				$window.sessionStorage.setItem("cart", JSON.stringify(cart));
+				product.amount = 1;
+				$scope.cart.items.push(product);
 			}
-			console.log(JSON.parse($window.sessionStorage.getItem("cart")));
-		}
+			$scope.cart.totalQuantity += 1;
+			$scope.cart.totalPrice += product.price
+			sessionStorage.setItem("cart", JSON.stringify($scope.cart));
 
+		}
 	}
 });
 function validateName(name) {
