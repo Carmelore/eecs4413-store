@@ -8,6 +8,22 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 		.then(function(response) {
 			$scope.products = response.data;
 		});
+		$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
+		$scope.addToCart = (product) => {
+		const findProduct = $scope.cart.items.findIndex(e => e.name === product.name && e.brand === product.brand && e.id === product.id);
+		console.log(findProduct);
+		if (findProduct != -1){
+			console.log($scope.cart.items[findProduct].amount);
+			$scope.cart.items[findProduct].amount += 1;
+		} else {
+			product.amount = 1;
+			$scope.cart.items.push(product);
+		}
+		$scope.cart.totalQuantity += 1;
+		$scope.cart.totalPrice += product.price
+		sessionStorage.setItem("cart", JSON.stringify($scope.cart));
+	}
+});
 	
 	$scope.logVisit = function(productId, status) {
 		$http.get('https://api.ipify.org/?format=json')
