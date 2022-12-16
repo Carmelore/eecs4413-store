@@ -8,6 +8,13 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 		.then(function(response) {
 			$scope.products = response.data;
 		});
+	
+	$scope.logVisit = function(productId, status) {
+		$http.get('https://api.ipify.org/?format=json')
+			.then((response) => {
+				$http.post('/visits', {ip_address: response.data.ip, product: productId, status: status});
+			});
+	}
 });
 
 function searchByType() {
