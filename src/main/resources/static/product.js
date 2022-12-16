@@ -69,7 +69,6 @@ $scope.addToCart = function(productId) {
 	}
 	console.log(JSON.parse($window.sessionStorage.getItem("cart")));
 }
-});
 
 function validateName(name) {
 	let pattern = new RegExp("^[a-zA-ZÀ-ž-' ]+$");
