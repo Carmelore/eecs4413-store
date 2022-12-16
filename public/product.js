@@ -1,4 +1,4 @@
-angular.module('Group-V_Store').controller('ProductController', function($scope, $http, $window) {
+angular.module('Group-V_Store', []).controller('ProductController', function($scope, $http, $window) {
 	// get list of products
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
@@ -54,6 +54,20 @@ angular.module('Group-V_Store').controller('ProductController', function($scope,
 		$http.post('/reviews', {reviewer: $scope.review.reviewer, stars: $scope.review.stars, details: $scope.review.details, productId: productId})
 			.success(onSuccess)
 			.error(onError);
+
+		$scope.addToCart = function(productId) {
+			//$window.sessionStorage.removeItem("cart");
+			if ($window.sessionStorage.getItem("cart") === null) {
+				$window.sessionStorage.setItem("cart", JSON.stringify([productId]));
+			}
+			else {
+				let cart = JSON.parse($window.sessionStorage.getItem("cart"));
+				cart.push(productId);
+				$window.sessionStorage.setItem("cart", JSON.stringify(cart));
+			}
+			console.log(JSON.parse($window.sessionStorage.getItem("cart")));
+		}
+
 	}
 });
 

@@ -3,7 +3,7 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 	const urlParams = new URLSearchParams(queryString);
 	const type = urlParams.get('type') ?? '';
 	const brand = urlParams.get('brand') ?? '';
-	
+
 	$http.get(`http://localhost:8080/products?type=${type}&brand=${brand}`)
 		.then(function(response) {
 			$scope.products = response.data;
@@ -23,8 +23,7 @@ angular.module('Group-V_Store', []).controller('ProductsController', function($s
 		$scope.cart.totalPrice += product.price
 		sessionStorage.setItem("cart", JSON.stringify($scope.cart));
 	}
-});
-	
+
 	$scope.logVisit = function(productId, status) {
 		$http.get('https://api.ipify.org/?format=json')
 			.then((response) => {
@@ -42,4 +41,3 @@ function searchByBrand() {
 	const brand = document.getElementById("brand").value;
 	window.location.href = `products.html?brand=${brand}`
 }
-
