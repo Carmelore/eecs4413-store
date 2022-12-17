@@ -1,7 +1,7 @@
 angular.module('Group-V_Store').controller('ProductController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 	const productId = $routeParams.id
 	
-	$http.get(`http://localhost:8080/product?id=${productId}`)
+	$http.get(`/product?id=${productId}`)
 		.then(function(response) {
 			$scope.product = response.data;
 			
