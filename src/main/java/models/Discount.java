@@ -5,7 +5,7 @@ public class Discount {
 	private String code;
 	private int discount;
 	private int required_spending;
-	private boolean used;
+	private boolean used = false;
 
 	public enum discount_type {
 		total, percent
