@@ -34,7 +34,7 @@ public class DiscountJdbcRepository {
 
 	public int create(String code, int discount, int requiredSpending, discount_type type) {
 		if (validateNewDiscount(code, discount, requiredSpending, type)) {
-			return jdbcTemplate.update("insert into Discounts(code, discount, required_spending, discount_type, used) values(?,?,?,?,?)",
+			return jdbcTemplate.update("insert into Discounts(code, discount, required_spending, type, used) values(?,?,?,?,?)",
 					code, discount, requiredSpending, type.toString(), false);
 		} else {
 			return 0;
