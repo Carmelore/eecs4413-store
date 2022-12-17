@@ -17,12 +17,17 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 	}).when('/login', {
 		templateUrl: 'login.html',
 		controller: 'User',
+	}).when('/cart', {
+		templateUrl: 'cart.html',
+		controller: "CartController"
+	}).when('/checkout', {
+		templateUrl: 'checkout.html',
 	}).when('/admin', {
 		templateUrl: 'admin.html',
 		controller: 'Stats',
 	}).when('/checkout', {
 		templateUrl: 'checkout.html',
-		controller: 'CheckoutController',
+		controller: 'Checkout',
 	}).otherwise({
         redirectTo: "/"
     });
