@@ -8,12 +8,13 @@ public class Product {
 	private String brand;
 	private int quantity;
 	private double price;
+	private int amount;
 	
 	public Product() {
 		super();
 	}
 	
-	public Product(int id, String name, String description, String type, String brand, int quantity, double price) {
+	public Product(int id, String name, String description, String type, String brand, int quantity, double price, int amount) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -22,8 +23,14 @@ public class Product {
 		this.brand = brand;
 		this.quantity = quantity;
 		this.price = price;
+		this.amount = amount;
 	}
-	
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	public int getId() {
 		return id;
 	}
@@ -70,7 +77,7 @@ public class Product {
 	@Override
     public String toString() {
         return String.format("Product [id=%s, name=%s, description=%s, type=%s, "
-        		+ "brand=%s, quantity=%s, price=%s]", id, name, description, type, brand, quantity, price);
+        		+ "brand=%s, quantity=%s, price=%s, amount=%s]", id, name, description, type, brand, quantity, price, amount);
     }
 
 }

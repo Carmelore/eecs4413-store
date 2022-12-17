@@ -47,4 +47,9 @@ public class StatsJdbcRepository {
 		return jdbcTemplate.update("insert into Visits(ip_address, created_at, product_id, status) values(?,?,?,?)",
 				ipa, LocalDate.now().toString(), productId, status.toString());
 	}
+	public int createSale(int userId, int productId, int quantity) {
+		return jdbcTemplate.update("insert into Sales(user_id, product_id, quantity, created_at) values(?,?,?,?)",
+				userId, productId, quantity, LocalDate.now().toString()
+				);
+	}
 }
