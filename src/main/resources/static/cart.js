@@ -28,6 +28,14 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
     // Update the quantity of an item in the cart
     $scope.updateQuantity = function(product, quantity) {
     console.log("HELLO", $scope.cart.items);
+    if (quantity <= 0){
+	quantity = 0;
+	let removeFromCart = prompt(`Do you want to remove ${product.name} from the cart?`)
+	if (removeFromCart){
+			return $scope.removeFromCart(product);
+	}
+	
+	}
     const ind = $scope.cart.items.findIndex(e => e.name === product.name && e.id === product.id)
     const diff = (quantity - $scope.cart.items[ind].amount)
     $scope.cart.totalPrice += diff * product.price

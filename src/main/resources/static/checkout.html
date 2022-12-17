@@ -100,7 +100,7 @@
 				order</button>
 		</form>
 		<div id="checkoutCart">
-			<h1>Your cart:
+			<h1>Your cart: </h1>
 			<div ng-controller="CartController as cartCtrl">
    	<div ng-repeat="items in cart.items">
    	<p>{{ items.name }}</p>
@@ -114,7 +114,7 @@
     <p>Total Price: {{ cart.totalPrice | number:2 }}</p>
 			</div>
 			
-			</h1>
+
 		</div>
 	</div>
 </body>
