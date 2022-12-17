@@ -100,7 +100,7 @@
 			<button style="align-self: center;" type="submit">Process
 				order</button>
 		</form>
-		<form ng-controller="Discount" action="discount/addDiscount()"
+		<form ng-controller="Discount" ng-submit="addDiscount()"
 			style="display: flex; flex-direction: column; gap: 1vh; width: 50%; border: 1px solid; padding: 5%;">
 			<div id="DiscountCodes">
 				<label for="discountCode">Discount Codes</label> <input
