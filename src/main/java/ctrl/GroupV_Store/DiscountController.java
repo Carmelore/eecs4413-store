@@ -1,9 +1,5 @@
 package ctrl.GroupV_Store;
 
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +15,7 @@ public class DiscountController {
 	@Autowired
 	DiscountJdbcRepository repository;
 
-	@PostMapping("/discount-create")
+	@PostMapping("/discount/create")
 	public int createDiscount(@RequestBody String data) throws Exception {
 		Gson gson = new Gson();
 		Discount newDiscount = gson.fromJson(data, Discount.class);
