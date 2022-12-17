@@ -1,5 +1,8 @@
 package ctrl.GroupV_Store;
 
+import javax.json.Json;
+
+import org.glassfish.jersey.server.JSONP;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +17,12 @@ public class DiscountController {
 
 	@Autowired
 	DiscountJdbcRepository repository;
+
+	@PostMapping("/discount/check")
+	public String checkDiscount(@RequestBody String code) throws Exception {
+		Gson gson = new Gson();
+		return gson.toJson(repository.findByDiscountCode(code));
+	}
 
 	@PostMapping("/discount/create")
 	public int createDiscount(@RequestBody String data) throws Exception {
