@@ -92,7 +92,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 				sessionStorage.setItem("cart", JSON.parse({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
 			}
 		})
-	}
+    }
 
 	
 });
