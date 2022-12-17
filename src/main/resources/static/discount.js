@@ -3,11 +3,13 @@ angular.module('Group-V_Store').controller('Discount', function($scope, $http, $
 	$scope.addDiscount = function() {
 		onSuccess = function(response){
 			let cart = JSON.parse(sessionStorage.getItem("cart"));
-			$scope.newDiscount = JSON.parse(response.data);
+			console.log(response.data);
+			$scope.newDiscount = response.data;
 			cart.discounts.push($scope.newDiscount);
 			sessionStorage.setItem("cart", JSON.stringify(cart));
+			console.log(cart);
 		}
-		$http.post('/discount/check', $scope.code).then(onSuccess, onError);
+		$http.post('/discount/check', $scope.code).then(onSuccess);
 	}
 
 	$scope.createDiscount = function() {
