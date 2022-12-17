@@ -49,3 +49,13 @@ details VARCHAR(250),
 product_id INT NOT NULL,
 FOREIGN KEY (product_id) REFERENCES Products
 );
+
+CREATE TABLE Discounts (
+id SERIAL,
+code VARCHAR(15) NOT NULL UNIQUE,
+discount INTEGER NOT NULL,
+required_spending INTEGER NOT NULL,
+type enum('percent','total') NOT NULL,
+used BOOLEAN NOT NULL,
+PRIMARY KEY (id)
+);
