@@ -70,8 +70,8 @@ public class Cart {
 		double subtotal = items.stream().filter(e -> e.getAmount() > 0).mapToDouble(e -> e.getAmount() * e.getPrice())
 				.sum();
 		double totalPrice = subtotal;
-		double totalDiscounts = 0;
-		double percentageDiscount = 0;
+		double totalDiscounts=0;
+		double percentageDiscount=0;
 		for (Discount current : discounts) {
 			if (current.getType().equals(discount_type.total) && current.getRequired_spending() > subtotal) {
 				totalDiscounts += current.getDiscount();
@@ -81,10 +81,8 @@ public class Cart {
 			}
 		}
 		totalPrice -= totalDiscounts;
-		totalPrice = totalPrice * (1 - (percentageDiscount / 100));
-		if (totalPrice < 0) {
-			totalPrice = 0;
-		}
+		totalPrice = totalPrice * (1-(percentageDiscount/100));
+		if (totalPrice < 0) {totalPrice = 0;}
 		return totalPrice;
 	}
 }
