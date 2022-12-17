@@ -27,7 +27,7 @@ public class DiscountJdbcRepository {
 	}
 	
 	public void setUsed(String code) {
-		jdbcTemplate.update("UPDATE discounts SET used=true WHERE code=?", code);
+		jdbcTemplate.update("UPDATE discounts SET used=true WHERE code=? AND used=false", code);
 	}
 
 	public List<Discount> findAll() {
