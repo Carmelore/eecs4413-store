@@ -21,7 +21,9 @@ public class DiscountController {
 	@PostMapping("/discount/check")
 	public String checkDiscount(@RequestBody String code) throws Exception {
 		Gson gson = new Gson();
-		return gson.toJson(repository.findByDiscountCode(code));
+		String newCode = gson.toJson(repository.findByDiscountCode(code));
+		repository.setUsed(code);
+		return newCode;
 	}
 
 	@PostMapping("/discount/create")
