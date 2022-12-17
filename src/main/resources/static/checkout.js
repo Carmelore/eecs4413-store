@@ -86,8 +86,9 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		$http.post("http://localhost:8080/checkout", JSON.stringify(data))
 		.then(response => {
 			console.log(response.data);
+			sessionStorage.setItem("cart", JSON.stringify({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
 		})
-	}
+    }
 
 	
 });
