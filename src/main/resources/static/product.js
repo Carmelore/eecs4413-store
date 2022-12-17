@@ -1,9 +1,7 @@
-angular.module('Group-V_Store', []).controller('ProductController', function($scope, $http) {
-	// get list of products
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
+angular.module('Group-V_Store').controller('ProductController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+	const productId = $routeParams.id
 	
-	$http.get(`http://localhost:8080/product?id=${urlParams.get('id')}`)
+	$http.get(`http://localhost:8080/product?id=${productId}`)
 		.then(function(response) {
 			$scope.product = response.data;
 			
@@ -11,7 +9,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 		//	$http.get('https://api.ipify.org/?format=json')
 		//		.then((response) => {
 		//			let ipa = response.data.ip;
-		//			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
+		//			$http.post('/visits', {ipAddress: ipa, productId: productId, status: 'VIEWED'});
 		//		});
 		
 			// so just randomly generating IP addresses instead :(
@@ -23,16 +21,15 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			}
 			ipa += Math.floor(Math.random() * 999 + 1);
 			
-			$http.post('/visits', {ipAddress: ipa, productId: $scope.product.id, status: 'VIEWED'});
+			$http.post('/visits', {ipAddress: ipa, productId: productId, status: 'VIEWED'});
 		});
 	
-	$http.get(`/reviews?id=${urlParams.get('id')}`)
+	$http.get(`/reviews?id=${productId}`)
 		.then(function(response) {
-			console.log(response);
 			$scope.reviews = response.data;
 		})
 		
-	$scope.addReview = function(productId) {
+	$scope.addReview = function() {
 		let errorMessages = document.getElementsByClassName("error");
 		[].forEach.call(errorMessages, (message) => {
 			message.innerHTML = "";
@@ -55,7 +52,7 @@ angular.module('Group-V_Store', []).controller('ProductController', function($sc
 			.success(onSuccess)
 			.error(onError);
 	}
-});
+}]);
 
 function validateName(name) {
 	let pattern = new RegExp("^[a-zA-ZÀ-ž-' ]+$");

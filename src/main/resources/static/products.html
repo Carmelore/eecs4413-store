@@ -8,29 +8,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
 	<script src="products.js"></script>
 </head>
-<body>
-<h1>SHOPPITY</h1>
-    <nav>
-    <ul>
-        <li>
-    <a href="/">Home</a>
-    </li>
-    <li>
-    <a>Cart</a>
-    </li>
-        <li>
-    <a href="/products.html">Products</a>
-    </li>
-        <li>
-    <a href="/checkout.html">Checkout</a>
-    </li>
-                <li>
-    <a href="/checkout">Checkout2</a>
-    </li>
-    </ul>
-    </nav>
-
-    <div ng-controller="ProductsController">
+<body ng-controller="ProductsController">
+    <div>
     	<table>
     		<tr>
     			<th>Name</th>
@@ -39,7 +18,7 @@
     			<th>Brand</th>
     		</tr>
     		<tr ng-repeat="product in products track by $index">
-    			<td><a ng-click="logVisit(product.id, 'VIEWED')" href="/product.html?id={{product.id}}">{{product.name}}</a></td>
+    			<td><a href="#/product/{{product.id}}">{{product.name}}</a></td>
     			<td>${{product.price}}</td>
     			<td>{{product.type}}</td>
     			<td>{{product.brand}}</td>
@@ -50,8 +29,8 @@
     
     <hr>
     <div class="searchByType">
-    <form onsubmit="return searchByType()">
-    	<input id="type" type="text"
+    <form ng-submit="searchByType()">
+    	<input id="type" type="text" ng-model="type"
 			placeholder="Type..."/>
     	<button type="submit" style="align-self: center;">Search by type</button>
     </form>
@@ -59,8 +38,8 @@
     
     <hr>
     <div class="searchByBrand">
-    <form onsubmit="return searchByBrand()">
-    	<input id="brand" type="text"
+    <form ng-submit="searchByBrand()">
+    	<input id="brand" type="text" ng-model="brand"
 			placeholder="Brand..."/>
     	<button type="submit" style="align-self: center;">Search by brand</button>
     </form>

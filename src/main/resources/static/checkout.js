@@ -1,4 +1,4 @@
-var app = angular.module('Group-V_Store', []);
+var app = angular.module('Group-V_Store');
 let count = 0;
 app.controller("CheckoutController", function ($scope) {
 	$scope.message = "Shoppity Checkout";
