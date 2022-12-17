@@ -1,7 +1,7 @@
 package models;
 
 public class Discount {
-	private int id;
+
 	private String code;
 	private int discount;
 	private int required_spending;
@@ -19,31 +19,27 @@ public class Discount {
 
 	public Discount(int id, String code, int discount, int required_spending, discount_type type, boolean used) {
 		super();
-		this.id = id;
+
 		this.code = code;
 		this.discount = discount;
 		this.required_spending = required_spending;
 		this.type = type;
 	}
 
-	public int getId() {
-		return id;
-	}
-
 	public String getCode() {
 		return code;
 	}
-	
-	public boolean getUsed() {
-		return used;
-	}
 
-	public void setUsed(boolean used) {
-		this.used = used;
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public int getDiscount() {
 		return discount;
+	}
+
+	public void setDiscount(int discount) {
+		this.discount = discount;
 	}
 
 	public int getRequired_spending() {
@@ -54,14 +50,25 @@ public class Discount {
 		this.required_spending = required_spending;
 	}
 
+	public boolean isUsed() {
+		return used;
+	}
+
+	public void setUsed(boolean used) {
+		this.used = used;
+	}
+
 	public discount_type getType() {
 		return type;
 	}
 
-	@Override
-	public String toString() {
-		return "Discount [id=" + id + ", code=" + code + ", discount=" + discount + ", required_spending="
-				+ required_spending + ", used=" + used + ", type=" + type + "]";
+	public void setType(discount_type type) {
+		this.type = type;
 	}
 
+	@Override
+	public String toString() {
+		return "Discount [code=" + code + ", discount=" + discount + ", required_spending=" + required_spending
+				+ ", used=" + used + ", type=" + type + "]";
+	}
 }
