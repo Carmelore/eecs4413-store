@@ -2,7 +2,7 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
 
 	$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
 	if ($scope.cart == null) {
-		sessionStorage.setItem("cart", JSON.stringify({ items: [], totalPrice: 0, totalQuantity: 0 }));
+		sessionStorage.setItem("cart", JSON.stringify({ items: [], discounts:[], totalPrice: 0, totalQuantity: 0 }));
 		$scope.cart = JSON.parse(sessionStorage.getItem("cart"));
 	}
 	console.log($scope.cart, 'cart');
@@ -33,10 +33,12 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
 
 	}
 	$scope.clearCart = () => {
-		$scope.cart.items = [];
-		$scope.cart.totalQuantity = 0;
-		$scope.cart.totalPrice = 0;
-		sessionStorage.setItem("cart", JSON.stringify($scope.cart));
+		let cart = JSON.parse(sessionStorage.getItem("cart"));
+		cart.items = [];
+		cart.totalQuantity = 0;
+		cart.totalPrice = 0;
+		sessionStorage.setItem("cart", JSON.stringify(cart));
+		$scope.cart = cart;
 	}
 	// Update the quantity of an item in the cart
 	$scope.updateQuantity = function(product, quantity) {
