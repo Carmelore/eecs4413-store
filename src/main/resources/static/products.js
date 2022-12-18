@@ -14,15 +14,16 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 			.then((response) => {
 				$http.post('/visits', { ip_address: response.data.ip, product: productId, status: status });
 			});
+	}
 
-		$scope.searchByBrand = function() {
-			$location.path(`products/brand/${$scope.brand}`);
-		}
+	$scope.searchByBrand = function() {
+		$location.path(`products/brand/${$scope.brand}`);
+	}
 
-		$scope.searchByType = function() {
-			$location.path(`products/type/${$scope.type}`);
-		}
-		$scope.addToCart = function(product) {
+	$scope.searchByType = function() {
+		$location.path(`products/type/${$scope.type}`);
+	}
+	$scope.addToCart = function(product) {
 		//$window.sessionStorage.removeItem("cart");
 		let cart = JSON.parse(sessionStorage.getItem("cart"));
 		console.log(cart);
@@ -37,7 +38,6 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 		var subtotal = 0;
 		var totalDiscounts = 0;
 		var percentageDiscount = 0;
-		console.log(cart.discounts[0].type);
 		for (let i = 0; i < cart.items.length; i++) {
 			subtotal += cart.items[i].price * cart.items[i].amount;
 			cart.totalQuantity += cart.items[i].amount;
@@ -61,4 +61,5 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 		}
 		sessionStorage.setItem("cart", JSON.stringify(cart));
 	}
-}]);
+}
+);
