@@ -1,5 +1,5 @@
 const cardNum = document.getElementById("cardNumber");
-angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {	
+angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		document.getElementById("cardNumber").addEventListener("input", (e) => {
 					e.preventDefault();
 		if (document.getElementById("cardNumber").value.length >= 19){
@@ -7,8 +7,8 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		} else if ((document.getElementById("cardNumber").value.length + 1) % 5 == 0 && e.data) {
 			document.getElementById("cardNumber").value += " "
 		}
-		
-		
+
+
 	})
 	document.getElementById("cardNumber").addEventListener("keydown", e => {
 		console.log("KEYDOWN", e)
@@ -57,7 +57,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 				optionalAddress: $scope.optionalAddressBilling,
 				city: $scope.cityBilling,
 				postalCode: $scope.postalCodeBilling,
-				province: $scope.provinceBilling	
+				province: $scope.provinceBilling
 				},
 			paymentInfo: {
 				cardNumber: $scope.cardNumber,
@@ -70,7 +70,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 				email: $scope.email,
 				phoneNumber: $scope.phoneNum
 			}
-			
+
 		}
 				if ($scope.sameAddress){
 			alert("checked");
@@ -86,7 +86,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		$http.post("http://localhost:8080/checkout", JSON.stringify(data))
 		.then(response => {
 			console.log(response.data);
-			if(response.data === "success"){ 
+			if(response.data === "success"){
 				alert("Order submitted");
 				window.location.replace('/');
 				sessionStorage.setItem("cart", JSON.parse({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
@@ -94,7 +94,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		})
     }
 
-	
+
 });
 
 let count = 0;

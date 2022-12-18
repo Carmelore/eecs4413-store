@@ -14,11 +14,11 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 			.then((response) => {
 				$http.post('/visits', { ip_address: response.data.ip, product: productId, status: status });
 			});
-		
+
 		$scope.searchByBrand = function() {
 			$location.path(`products/brand/${$scope.brand}`);
 		}
-		
+
 		$scope.searchByType = function() {
 			$location.path(`products/type/${$scope.type}`);
 		}
@@ -44,7 +44,7 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 		}
 		cart.totalPrice = subtotal;
 		for (let i = 0; i < cart.discounts.length; i++) {
-			// 
+			//
 			console.log(cart.discounts[i].type === "total")
 			if (cart.discounts[i].type === "total" && cart.discounts[i].required_spending < subtotal) {
 				totalDiscounts += cart.discounts[i].discount;

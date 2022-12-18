@@ -1,4 +1,5 @@
 angular.module('Group-V_Store').controller('CartController', ['$scope', '$http', function($scope, $http, $window) {
+
     $scope.cart = JSON.parse(sessionStorage.getItem("cart"));
     	if ($scope.cart == null){
 		sessionStorage.setItem("cart", JSON.stringify({items: [], totalPrice: 0, totalQuantity: 0}));
@@ -8,7 +9,7 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
 
 	$scope.resetCart = () => {
 		sessionStorage.setItem("cart", null);
-		
+
 	}
 
     // Remove an item from the cart
@@ -28,7 +29,7 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
     $scope.addToCart = function(product) {
         console.log(product);
         console.log($scope.cart);
-        
+
     }
     $scope.clearCart = () => {
         $scope.cart.items = [];
@@ -45,7 +46,7 @@ angular.module('Group-V_Store').controller('CartController', ['$scope', '$http',
 	if (removeFromCart){
 			return $scope.removeFromCart(product);
 	}
-	
+
 	}
     const ind = $scope.cart.items.findIndex(e => e.name === product.name && e.id === product.id)
     const diff = (quantity - $scope.cart.items[ind].amount)
