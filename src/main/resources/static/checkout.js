@@ -1,5 +1,5 @@
 const cardNum = document.getElementById("cardNumber");
-angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
+angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {	
 		document.getElementById("cardNumber").addEventListener("input", (e) => {
 					e.preventDefault();
 		if (document.getElementById("cardNumber").value.length >= 19){
@@ -7,11 +7,10 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 		} else if ((document.getElementById("cardNumber").value.length + 1) % 5 == 0 && e.data) {
 			document.getElementById("cardNumber").value += " "
 		}
-
-
+		
+		
 	})
 	document.getElementById("cardNumber").addEventListener("keydown", e => {
-		console.log("KEYDOWN", e)
 		if (document.getElementById("cardNumber").value.length >= 19 && e.key !== "Backspace"){
 			e.preventDefault();
 		}
@@ -28,11 +27,21 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 	})
 	$scope.cart = JSON.parse(sessionStorage.getItem("cart"))
 	$scope.user = JSON.parse(sessionStorage.getItem("user"));
-	console.log($scope.user);
+	if ($scope.user){
+		$scope.email = $scope.user.username;
+		$scope.firstName = $scope.user.name
+		$scope.address = $scope.user.shipping_address;
+		$scope.adressBilling = $scope.user.billing_address;
+	}
 	$scope.count = 0;
 	$scope.submit = () => {
+		let invalid = false;
 		if (!$scope.user){
 			alert("You must sign in to complete your order")
+			return;
+		}
+		if ($scope.cart.items.length <= 0){
+			alert("You must add items to your cart!");
 			return;
 		}
 		const data = {
@@ -48,11 +57,11 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 				province: $scope.province
 			},
 			billingAddress: {
-				address: $scope.address,
+				address: $scope.addressBilling,
 				optionalAddress: $scope.optionalAddressBilling,
 				city: $scope.cityBilling,
 				postalCode: $scope.postalCodeBilling,
-				province: $scope.provinceBilling
+				province: $scope.provinceBilling	
 				},
 			paymentInfo: {
 				cardNumber: $scope.cardNumber,
@@ -65,31 +74,56 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 				email: $scope.email,
 				phoneNumber: $scope.phoneNum
 			}
-
+			
 		}
 				if ($scope.sameAddress){
-			alert("checked");
 			data.billingAddress = data.shippingInfo;
 			}
-		console.log($scope.count);
-		console.log(data);
+			Object.keys(data.shippingInfo).forEach(key => {
+				if (!data.shippingInfo[key]){
+
+					invalid = true;
+				}
+			})
+			Object.keys(data.paymentInfo).forEach(key => {
+				if (!data.paymentInfo[key] && key !== "discountCode"){
+					invalid = true;
+				}
+			})
+			Object.keys(data.billingAddress).forEach(key => {
+				if (!data.billingAddress[key]){
+					invalid = true;
+				}
+			})
+			if (!$scope.email || !$scope.phoneNum){
+				
+				alert("Need to provide contact information");
+				return;
+			}
+			
 		if ($scope.count % 3 == 0 && $scope.count > 0){
 			alert("Payment failed")
+			$scope.count += 1;
 			return;
 		}
 		$scope.count += 1;
-		$http.post("/checkout", JSON.stringify(data))
+		if (invalid){
+			alert("Invalid form");
+			return;
+		}
+		$http.post("http://localhost:8080/checkout", JSON.stringify(data))
 		.then(response => {
-			console.log(response.data);
-			if(response.data === "success"){
-				alert("Order submitted");
-				window.location.replace('/');
-				sessionStorage.setItem("cart", JSON.parse({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
+			if (response.data === "success"){
+				alert("Order successful");
+			}else {
+				alert("Error occurred. Please try again");
 			}
+		}).catch(err => {
+			console.log(err);
 		})
-    }
+	}
 
-
+	
 });
 
 let count = 0;

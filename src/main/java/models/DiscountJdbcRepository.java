@@ -25,10 +25,6 @@ public class DiscountJdbcRepository {
 		return jdbcTemplate.queryForObject("select * from Discounts where code=?",
 				new BeanPropertyRowMapper<>(Discount.class), code);
 	}
-	
-	public void setUsed(String code) {
-		jdbcTemplate.update("UPDATE discounts SET used=true WHERE code=? AND used=false", code);
-	}
 
 	public List<Discount> findAll() {
 		List<Discount> results = jdbcTemplate.query("select * from Discounts",
