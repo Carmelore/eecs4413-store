@@ -1,8 +1,8 @@
-angular.module('Group-V_Store').controller('ProductsController', function($scope, $http) {
+angular.module('Group-V_Store').controller('ProductsController', function($scope, $http, $routeParams, $location) {
 	const queryString = window.location.search;
 	const urlParams = new URLSearchParams(queryString);
-	const type = urlParams.get('type') ?? '';
-	const brand = urlParams.get('brand') ?? '';
+	const type = $routeParams.get('type') ?? '';
+	const brand = $routeParams.get('brand') ?? '';
 
 	$http.get(`/products?type=${type}&brand=${brand}`)
 		.then(function(response) {
