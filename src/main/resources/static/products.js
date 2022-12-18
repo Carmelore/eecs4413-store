@@ -33,9 +33,9 @@ angular.module('Group-V_Store').controller('ProductsController', ['$scope', '$ht
 			cart.items.push(product);
 		}
 		cart.totalQuantity = 0;
-		var subtotal = 0;
-		var totalDiscounts = 0;
-		var percentageDiscount = 0;
+		let subtotal = 0;
+		let totalDiscounts = 0;
+		let percentageDiscount = 0;
 		for (let i = 0; i < cart.items.length; i++) {
 			subtotal += cart.items[i].price * cart.items[i].amount;
 			cart.totalQuantity += cart.items[i].amount;
@@ -57,6 +57,7 @@ angular.module('Group-V_Store').controller('ProductsController', ['$scope', '$ht
 		if (cart.totalPrice < 0) {
 			cart.totalPrice = 0;
 		}
+		$scope.cart = cart;
 		sessionStorage.setItem("cart", JSON.stringify(cart));
 	}
 }]
