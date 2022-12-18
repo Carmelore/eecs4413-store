@@ -1,8 +1,6 @@
-angular.module('Group-V_Store').controller('ProductsController', function($scope, $http, $routeParams, $location) {
-	const queryString = window.location.search;
-	const urlParams = new URLSearchParams(queryString);
-	const type = $routeParams.get('type') ?? '';
-	const brand = $routeParams.get('brand') ?? '';
+angular.module('Group-V_Store').controller('ProductsController', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location) {
+	const type = $routeParams.type || '';
+	const brand = $routeParams.brand || '';
 
 	$http.get(`/products?type=${type}&brand=${brand}`)
 		.then(function(response) {
@@ -61,5 +59,5 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 		}
 		sessionStorage.setItem("cart", JSON.stringify(cart));
 	}
-}
+}]
 );
