@@ -1,17 +1,17 @@
-angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
+angular.module('Group-V_Store', ['ngRoute']).config(function($routeProvider) {
 	$routeProvider.when('/', {
-        templateUrl: 'products.html',
-        controller: 'ProductsController',
-    }).when('/products/type/:type', {
 		templateUrl: 'products.html',
 		controller: 'ProductsController',
-    }).when('/products/brand/:brand', {
+	}).when('/products/type/:type', {
 		templateUrl: 'products.html',
 		controller: 'ProductsController',
-    }).when('/product/:id', {
+	}).when('/products/brand/:brand', {
+		templateUrl: 'products.html',
+		controller: 'ProductsController',
+	}).when('/product/:id', {
 		templateUrl: 'product.html',
 		controller: 'ProductController',
-    }).when('/registration', {
+	}).when('/registration', {
 		templateUrl: 'registration.html',
 		controller: 'User',
 	}).when('/login', {
@@ -20,8 +20,6 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 	}).when('/cart', {
 		templateUrl: 'cart.html',
 		controller: "CartController"
-	}).when('/checkout', {
-		templateUrl: 'checkout.html',
 	}).when('/admin', {
 		templateUrl: 'admin.html',
 		controller: 'Stats',
@@ -29,6 +27,6 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 		templateUrl: 'checkout.html',
 		controller: 'Checkout',
 	}).otherwise({
-        redirectTo: "/"
-    });
+		redirectTo: "/"
+	});
 });

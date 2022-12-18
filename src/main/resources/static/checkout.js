@@ -83,8 +83,8 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 			console.log(response.data);
 			if(response.data === "success"){
 				alert("Order submitted");
+				sessionStorage.setItem("cart", JSON.stringify({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
 				window.location.replace('/');
-				sessionStorage.setItem("cart", JSON.parse({items: [], discounts: [], totalQuantity: 0, totalPrice: 0}))
 			}
 		})
     }
