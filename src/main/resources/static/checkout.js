@@ -83,7 +83,7 @@ angular.module('Group-V_Store').controller('Checkout', function($scope, $http) {
 			return;
 		}
 		$scope.count += 1;
-		$http.post("http://localhost:8080/checkout", JSON.stringify(data))
+		$http.post("/checkout", JSON.stringify(data))
 		.then(response => {
 			console.log(response.data);
 			if(response.data === "success"){

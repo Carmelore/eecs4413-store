@@ -4,7 +4,7 @@ angular.module('Group-V_Store').controller('ProductsController', function($scope
 	const type = urlParams.get('type') ?? '';
 	const brand = urlParams.get('brand') ?? '';
 
-	$http.get(`http://localhost:8080/products?type=${type}&brand=${brand}`)
+	$http.get(`/products?type=${type}&brand=${brand}`)
 		.then(function(response) {
 			$scope.products = response.data;
 		});
