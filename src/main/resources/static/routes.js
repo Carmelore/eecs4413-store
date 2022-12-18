@@ -1,16 +1,6 @@
 angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 	$routeProvider.when('/', {
-        templateUrl: 'products.html',
-        controller: 'ProductsController',
-    }).when('/products/type/:type', {
-		templateUrl: 'products.html',
-		controller: 'ProductsController',
-    }).when('/products/brand/:brand', {
-		templateUrl: 'products.html',
-		controller: 'ProductsController',
-    }).when('/product/:id', {
-		templateUrl: 'product.html',
-		controller: 'ProductController',
+        templateUrl: 'index.html',
     }).when('/registration', {
 		templateUrl: 'registration.html',
 		controller: 'User',
@@ -24,10 +14,6 @@ angular.module('Group-V_Store', ['ngRoute']).config(function ($routeProvider) {
 		templateUrl: 'checkout.html',
 	}).when('/admin', {
 		templateUrl: 'admin.html',
-		controller: 'Stats',
-	}).when('/checkout', {
-		templateUrl: 'checkout.html',
-		controller: 'Checkout',
 	}).otherwise({
         redirectTo: "/"
     });

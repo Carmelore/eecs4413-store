@@ -9,7 +9,7 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.7/angular-route.js"></script>
 <script src="checkout.js"></script>
 <script src="index.js"></script>
-
+<script src="discount.js"></script>
 
 <link rel="stylesheet" href="checkout.css" />
 <meta charset="ISO-8859-1">
@@ -36,56 +36,59 @@
 				ng-model="optionalAddress" /></label> <label for="city"><input
 				id="city" placeholder="City" ng-model="city" /></label> <label
 				for="postalCode"><input id="postalCode"
-				placeholder="Postal Code" ng-model="postalCode" /></label>
-			<select id="province" ng-model="province">
-					<option label="ON">ON</option>
-					<option label="AB">AB</option>
-					<option label="NS">NS</option>
-					<option label="NB">NB</option>
-					<option label="MB">MB</option>
-					<option label="SK">SK</option>
-					<option label="BC">BC</option>
-					<option label="NL">NL</option>
-					<option label="QC">QC</option>
-					<option label="PE">PE</option>
-					<option label="YT">YT</option>
-					<option label="NT">NT</option>
-					<option label="NU">NU</option>
+				placeholder="Postal Code" ng-model="postalCode" /></label> <select
+				id="province" ng-model="province">
+				<option label="ON">ON</option>
+				<option label="AB">AB</option>
+				<option label="NS">NS</option>
+				<option label="NB">NB</option>
+				<option label="MB">MB</option>
+				<option label="SK">SK</option>
+				<option label="BC">BC</option>
+				<option label="NL">NL</option>
+				<option label="QC">QC</option>
+				<option label="PE">PE</option>
+				<option label="YT">YT</option>
+				<option label="NT">NT</option>
+				<option label="NU">NU</option>
 			</select>
 			<h2>Billing Address</h2>
-			<label for="sameAddress">Same as shipping address<input type="checkbox" ng-model="sameAddress"/></label>
+			<label for="sameAddress">Same as shipping address<input
+				type="checkbox" ng-model="sameAddress" /></label>
 
 			<div ng-hide="sameAddress">
-			<label for="address"><input id="address" type="text"
-				placeholder="Address" ng-model="addressBilling" /></label> <label
-				for="optionalAddressBilling"><input id="optionalAddressBilling"
-				type="text" placeholder="Apartment, suite, etc... (optional)"
-				ng-model="optionalAddressBilling" /></label> <label for="city"><input
-				id="city" placeholder="City" ng-model="cityBilling" /></label> <label
-				for="postalCode"><input id="postalCode"
-				placeholder="Postal Code" ng-model="postalCodeBilling" /></label> <label
-				for="province"> 
-				<select id="province" ng-model="provinceBilling">
-					<option label="ON">ON</option>
-					<option label="AB">AB</option>
-					<option label="NS">NS</option>
-					<option label="NB">NB</option>
-					<option label="MB">MB</option>
-					<option label="SK">SK</option>
-					<option label="BC">BC</option>
-					<option label="NL">NL</option>
-					<option label="QC">QC</option>
-					<option label="PE">PE</option>
-					<option label="YT">YT</option>
-					<option label="NT">NT</option>
-					<option label="NU">NU</option>
-			</select>
-			</label>
+				<label for="address"><input id="address" type="text"
+					placeholder="Address" ng-model="addressBilling" /></label> <label
+					for="optionalAddressBilling"><input
+					id="optionalAddressBilling" type="text"
+					placeholder="Apartment, suite, etc... (optional)"
+					ng-model="optionalAddressBilling" /></label> <label for="city"><input
+					id="city" placeholder="City" ng-model="cityBilling" /></label> <label
+					for="postalCode"><input id="postalCode"
+					placeholder="Postal Code" ng-model="postalCodeBilling" /></label> <label
+					for="province"> <select id="province"
+					ng-model="provinceBilling">
+						<option label="ON">ON</option>
+						<option label="AB">AB</option>
+						<option label="NS">NS</option>
+						<option label="NB">NB</option>
+						<option label="MB">MB</option>
+						<option label="SK">SK</option>
+						<option label="BC">BC</option>
+						<option label="NL">NL</option>
+						<option label="QC">QC</option>
+						<option label="PE">PE</option>
+						<option label="YT">YT</option>
+						<option label="NT">NT</option>
+						<option label="NU">NU</option>
+				</select>
+				</label>
 			</div>
 			<h2>Payment Information</h2>
 			<div id="paymentDetails">
-				<label for="cardNumber"  style="display: inline-flex;">Card
-					details</label> <input id="cardNumber" ng-model="cardNumber" placeholder="1234 1234 1234 1234" />
+				<label for="cardNumber" style="display: inline-flex;">Card
+					details</label> <input id="cardNumber" ng-model="cardNumber"
+					placeholder="1234 1234 1234 1234" />
 				<div>
 					<label for="cardExp"><input id="cardExp"
 						placeholder="MM / YY" ng-model="cardExp" /></label> <label for="CVC"><input
@@ -94,30 +97,40 @@
 				<label for="cardName">Name on card </label> <input id="cardName"
 					ng-model="cardName" />
 			</div>
-			<div id="DiscountCodes">
-				<label for="discountCode">Discount Codes</label> <input
-					id="discountCode" ng-model="discountCode" placeholder="SAVE MONEEEE"
-					th:field="*{discountCode}">
-			</div>
 			<button style="align-self: center;" type="submit">Process
 				order</button>
 		</form>
-		<div id="checkoutCart">
-			<h1>Your cart: </h1>
-			<div ng-controller="CartController as cartCtrl">
-   	<div ng-repeat="items in cart.items">
-   	<p>{{ items.name }}</p>
-   	<p>{{ items.price }}</p>
-   	<p>{{ items.brand }}</p>
-   	<p><button ng-click="updateQuantity(items, items.amount - 1)">-</button>{{ items.amount }}<button ng-click="updateQuantity(items, items.amount + 1)">+</button></p>
-   	<button ng-click="removeFromCart(items)">Remove</button>
-   	</div>
-   	<button ng-click="clearCart()">Clear cart</button>
-    <p>Total Quantity: {{ cart.totalQuantity }}</p>
-    <p>Total Price: {{ cart.totalPrice | number:2 }}</p>
+		<form ng-controller="Discount" ng-submit="addDiscount()"
+			style="display: flex; flex-direction: column; gap: 1vh; width: 50%; border: 1px solid; padding: 5%;">
+			<div id="DiscountCodes">
+				<label for="discountCode">Discount Codes</label> <input
+					id="discountCode" ng-model="code"
+					placeholder="SAVE MONEEEE" th:field="*{discountCode}" required>
 			</div>
-			
+			<button style="align-self: center;" type="submit">Add
+				Discount</button>
+		</form>
+		<div id="checkoutCart">
+			<h1>
+				Your cart:
+				<div ng-controller="CartController as cartCtrl">
+					<div ng-repeat="items in cart.items">
+						<p>{{ items.name }}</p>
+						<p>{{ items.price }}</p>
+						<p>{{ items.brand }}</p>
+						<p>
+							<button ng-click="updateQuantity(items, items.amount - 1)">-</button>
+							{{ items.amount }}
+							<button ng-click="updateQuantity(items, items.amount + 1)">+</button>
+						</p>
+						<button ng-click="removeFromCart(items)">Remove</button>
+					</div>
+					<button ng-click="clearCart()">Clear cart</button>
+					<p>Total Quantity: {{ cart.totalQuantity }}</p>
+					<p>Total Price: {{ cart.totalPrice | number:2 }}</p>
+				</div>
 
+			</h1>
 		</div>
 	</div>
 </body>
