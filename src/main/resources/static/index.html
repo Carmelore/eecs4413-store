@@ -21,19 +21,16 @@
 <script src="index.js"></script>
 <link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="Group-V_Store" ng-view>
-	<a href="#/login">Login</a>
-	<br />
-	<a href="#/registration">Registration</a>
-	<br />
-	<a href="#/admin">Admin</a>
-	<br />
-	<a href="#/checkout">Checkout</a>
-	<br />
-	<a href="#/cart">Cart</a>
-	<br />
-	<a href="/products.html">Products</a>
-	<br />
-	<section></section>
+<body ng-app="Group-V_Store">
+	<h1>SHOPPITY</h1>
+	<ul>
+		<li><a href="#/login">Login</a></li>
+		<li><a href="#/registration">Registration</a></li>
+		<li><a href="#/admin">Admin</a></li>
+		<li><a href="#/checkout">Checkout</a></li>
+		<li><a href="#/cart">Cart</a></li>
+		<li><a href="#/products">Products</a></li>
+	</ul>
+	<div ng-view></div>
 </body>
 </html>
