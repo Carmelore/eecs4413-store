@@ -36,3 +36,4 @@ INSERT INTO reviews(reviewer, stars, details, product_id) VALUES ('mean person',
 INSERT INTO Discounts(code, discount, required_spending, type, used) VALUES ('50%OFF', 50, 0, 'percent', 0);
 INSERT INTO Discounts(code, discount, required_spending, type, used) VALUES ('SAVE10', 10, 15, 'total', 0);
 INSERT INTO Discounts(code, discount, required_spending, type, used) VALUES ('GSHBCN', 10, 15, 'total', 0);
+
